@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Hexo</title>
+  <title>python_decorator | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -28,27 +28,27 @@
     <meta name="keywords" content="" />
 
     <!-- Favicon, (keep icon in root folder) -->
-    <link rel="Shortcut Icon" href="/StevenXue.github.io/img/favicon.ico" type="image/ico">
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-    <link rel="stylesheet" href="/StevenXue.github.io/css/all.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
     
-    <link rel="stylesheet" href="/StevenXue.github.io/highlightjs/vs.css" type="text/css">
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
     
 
     <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/StevenXue.github.io/css/ie8.css" />
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
     <![endif]-->
 
     <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-    <script src="/StevenXue.github.io/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/jquery-1.11.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
 
     <!-- Load these in the <head> for quicker IE8+ load times -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="/StevenXue.github.io/js/html5shiv.min.js"></script>
-    <script src="/StevenXue.github.io/js/respond.min.js"></script>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
     <![endif]-->
 
   
@@ -67,12 +67,12 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/StevenXue.github.io/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close"/>
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
-            <li><a href="/StevenXue.github.io/" class="animsition-link" title="Home">Home</a></li>
-            <li><a href="/StevenXue.github.io/archives" class="animsition-link" title="archive">archives</a></li>
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
             <!-- Dropdown Menu -->
 			 
             <li>
@@ -103,8 +103,8 @@
         <!-- Lists in Slidebars -->
         <ul class="sb-menu secondary">
             
-            <li><a href="/StevenXue.github.io/about.html" class="animsition-link" title="about">About</a></li>
-            <li><a href="/StevenXue.github.io/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
         </ul>
     </div>
     
@@ -173,23 +173,40 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2019-09-24T11:37:05.146Z" itemprop="datePublished">
+      <time datetime="2019-09-24T11:37:05.000Z" itemprop="datePublished">
           2019-09-24
       </time>
     
+    
+    | 
+    <a href='/tags/python-Techknowledge/'>python, Techknowledge</a>
+    
+    
 </span>
-                <h1></h1>
+                <h1>python_decorator</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		
+      		<h2 id="Python-装饰器"><a href="#Python-装饰器" class="headerlink" title="Python 装饰器"></a>Python 装饰器</h2><p>在面向对象（OOP）的设计模式中，decorator被称为装饰模式。OOP的装饰模式需要通过继承和组合来实现，而Python除了能支持OOP的decorator外，直接从语法层次支持decorator。Python的decorator可以用函数实现，也可以用类实现。</p>
+<p>decorator可以增强函数的功能，定义起来虽然有点复杂，但使用起来非常灵活和方便。</p>
+<h3 id="装饰没有参数的函数"><a href="#装饰没有参数的函数" class="headerlink" title="装饰没有参数的函数"></a>装饰没有参数的函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span><span class="params">(func)</span>:</span>  <span class="comment"># 定义了一个闭包</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span><span class="params">()</span>:</span>  <span class="comment"># 闭包内的函数</span></span><br><span class="line"></span><br><span class="line">        print(<span class="string">'这里是需要装饰的内容，就是需要添加的内容'</span>)</span><br><span class="line"></span><br><span class="line">        func()  <span class="comment"># 调用实参函数。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func_in</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span>  <span class="comment"># 需要被装饰修改的函数。</span></span><br><span class="line">    print(<span class="string">'无参函数的测试'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = function(test)  <span class="comment"># 装饰器的原理就是将原有的函数名重新定义为以原函数为参数的闭包。</span></span><br><span class="line"></span><br><span class="line">test() <span class="comment"># 这里再次掉用test()的时候，其实是将会调用闭包内的函数func_in()。所以将会起到装饰修改的作用，最后会再次调用原函数test()。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 装饰器的python写法，等价于test = function(test)，并且无需调用当代码运行道这里，Python会自动运行。</span></span><br><span class="line"><span class="meta">@function  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'无参函数的测试'</span>)</span><br><span class="line"></span><br><span class="line">test()  <span class="comment"># 这里再次调用函数时，将会产生修改后的效果。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="装饰带有参数的函数"><a href="#装饰带有参数的函数" class="headerlink" title="装饰带有参数的函数"></a>装饰带有参数的函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span><span class="params">(func)</span>:</span>  <span class="comment"># 定义了一个闭包</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span><span class="params">(*args, **kwargs)</span>:</span> </span><br><span class="line">        <span class="comment"># 闭包内的函数，因为装饰器运行的实则是闭包内的函数，所以这里将需要有形参用来接收原函数的参数。</span></span><br><span class="line">        </span><br><span class="line">        print(<span class="string">'这里是需要装饰的内容，就是需要添加的内容'</span>)</span><br><span class="line"></span><br><span class="line">        func(*args, **kwargs)  <span class="comment"># 调用实参函数，并传入一致的实参。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func_in</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@function  # 装饰器的python写法，等价于test = function(test) .</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'无参函数的测试'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里再次掉用test()的时候，其实是将会调用闭包内的函数func_in()。</span></span><br><span class="line"><span class="comment"># 所以将会起到装饰修改的作用，最后会再次调用原函数test()。</span></span><br><span class="line">test(<span class="number">5</span>, <span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="装饰带有返回值的函数"><a href="#装饰带有返回值的函数" class="headerlink" title="装饰带有返回值的函数"></a>装饰带有返回值的函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span><span class="params">(func)</span>:</span>  <span class="comment"># 定义了一个闭包</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span><span class="params">(*args, **kwargs)</span>:</span> </span><br><span class="line">        <span class="comment"># 闭包内的函数，因为装饰器运行的实则是闭包内的函数，所以这里将需要有形参用来接收原函数的参数。</span></span><br><span class="line"></span><br><span class="line">        print(<span class="string">'这里是需要装饰的内容，就是需要添加的内容'</span>)</span><br><span class="line"></span><br><span class="line">        num = func(*args, **kwargs) </span><br><span class="line">        <span class="comment"># 调用实参函数，并传入一致的实参，并且用变量来接收原函数的返回值，</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> num  <span class="comment"># 将接受到的返回值再次返回到新的test()函数中。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func_in</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@function</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(a, b)</span>:</span>  <span class="comment"># 定义一个函数</span></span><br><span class="line">    <span class="keyword">return</span> a + b  <span class="comment"># 返回实参的和</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通用装饰器"><a href="#通用装饰器" class="headerlink" title="通用装饰器"></a>通用装饰器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function</span><span class="params">(func)</span>:</span>  <span class="comment"># 定义了一个闭包</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func_in</span><span class="params">(*args, **kwargs)</span>:</span>  </span><br><span class="line">        <span class="comment"># 闭包内的函数，因为装饰器运行的实则是闭包内的函数，所以这里将需要有形参用来接收原函数的参数。</span></span><br><span class="line"></span><br><span class="line">        print(<span class="string">'这里是需要装饰的内容，就是需要添加的内容'</span>)</span><br><span class="line"></span><br><span class="line">        num = func(*args, **kwargs)  </span><br><span class="line">        <span class="comment"># 调用实参函数，并传入一致的实参，并且用变量来接收原函数的返回值，</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> num  <span class="comment"># 将接受到的返回值再次返回到新的test()函数中。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> func_in</span><br></pre></td></tr></table></figure>
+
+<h3 id="带有参数的装饰器"><a href="#带有参数的装饰器" class="headerlink" title="带有参数的装饰器"></a>带有参数的装饰器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*args, **kwags)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">function</span><span class="params">(func)</span>:</span>  <span class="comment"># 定义了一个闭包</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">func_in</span><span class="params">(*args, **kwargs)</span>:</span>  </span><br><span class="line">            <span class="comment"># 闭包内的函数，因为装饰器运行的实则是闭包内的函数，</span></span><br><span class="line">            <span class="comment"># 所以这里将需要有形参用来接收原函数的参数。</span></span><br><span class="line"></span><br><span class="line">            print(<span class="string">'这里是需要装饰的内容，就是需要添加的内容'</span>)</span><br><span class="line"></span><br><span class="line">            num = func(*args, **kwargs) </span><br><span class="line">            <span class="comment"># 调用实参函数，并传入一致的实参，并且用变量来接收原函数的返回值，</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> num  <span class="comment"># 将接受到的返回值再次返回到新的test()函数中。</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> func_in</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> function</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@func(50)  # 这里会先运行函数func，并传入参数，之后会再次运行闭包函数进行装饰, @func(50)&gt;&gt;@function，然后将由@function继续进行装饰修改。</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    print(<span class="string">'这是一个函数'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure>
+
+<h3 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span><span class="params">(object)</span>:</span>  <span class="comment"># 定义一个类</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(self, func)</span>:</span></span><br><span class="line">        self.__func = func</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(self)</span>:</span>  <span class="comment"># 定义call方法，当直接调用类的时候，运行这里。</span></span><br><span class="line"></span><br><span class="line">        print(<span class="string">'这里是装饰的功能'</span>)</span><br><span class="line"></span><br><span class="line">        self.__func()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t = Test()  <span class="comment"># 实例化对象</span></span><br><span class="line"></span><br><span class="line">t()  <span class="comment"># 调用类，将会调用call方法。</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">类装饰器等于test = Test(test),将函数test当作参数传入类中的init方法，</span></span><br><span class="line"><span class="string">并将函数名赋值给私有属性__func，当函数test被调用的时候，其实是运行Test类中的call方法.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="meta">@Test  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'被装饰的函数'</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">test()   <span class="comment"># 这里调用的不在是函数test，而是实例对象test的call方法，会先进行装饰，</span></span><br><span class="line"><span class="comment"># 然后再调用私有属性func(),func 其实就是被装饰的函数test</span></span><br></pre></td></tr></table></figure>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     
-    <a class="pull-right" href="/StevenXue.github.io/2019/09/24/hello-world/">
+    <a class="pull-right" href="/2019/09/24/hello-world/">
         Hello World →
     </a>
     
@@ -301,12 +318,12 @@
         resizeHero();
     });
 </script>
-<script src="/StevenXue.github.io/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/StevenXue.github.io/js/scripts.js"></script><!-- Theme scripts -->
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
 
-<link rel="stylesheet" href="/StevenXue.github.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/StevenXue.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 $('#intro').find('img').each(function(){
   var alt = this.alt;
