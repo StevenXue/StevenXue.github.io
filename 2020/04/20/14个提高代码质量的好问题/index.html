@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>VIM 查找与替换字符串命令 | 石头记</title>
+  <title>14个提高代码质量的好问题 | 石头记</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,76 +173,59 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2019-09-25T02:44:55.000Z" itemprop="datePublished">
-          2019-09-25
+      <time datetime="2020-04-20T13:11:46.000Z" itemprop="datePublished">
+          2020-04-20
       </time>
     
     
     | 
-    <a href='/tags/Linux，正则表达式/'>Linux，正则表达式</a>
+    <a href='/tags/Code/'>Code</a>
     
     
 </span>
-                <h1>VIM 查找与替换字符串命令</h1>
+                <h1>14个提高代码质量的好问题</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>在normal模式下按下<code>/</code>即可进入查找模式，输入要查找的字符串并按下回车。 Vim会跳转到第一个匹配。按下<code>n</code>查找下一个，按下<code>N</code>查找上一个。</p>
-<p>Vim查找支持正则表达式，例如<code>/vim$</code>匹配行尾的<code>&quot;vim&quot;</code>。 需要查找特殊字符需要转义，例如<code>/vim\$</code>匹配<code>&quot;vim$&quot;</code>。</p>
-<blockquote>
-<p>注意查找回车应当用<code>\n</code>，而替换为回车应当用<code>\r</code>（相当于<code>&lt;CR&gt;</code>）。</p>
-</blockquote>
-<h3 id="大小写敏感查找"><a href="#大小写敏感查找" class="headerlink" title="大小写敏感查找"></a>大小写敏感查找</h3><p>在查找模式中加入<code>\c</code>表示大小写不敏感查找，<code>\C</code>表示大小写敏感查找。例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/foo\c</span><br></pre></td></tr></table></figure>
-
-<p>将会查找所有的<code>&quot;foo&quot;</code>,<code>&quot;FOO&quot;</code>,<code>&quot;Foo&quot;</code>等字符串。</p>
-<h2 id="查找与替换"><a href="#查找与替换" class="headerlink" title="查找与替换"></a>查找与替换</h2><p><code>:s</code>（substitute）命令用来查找和替换字符串。语法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:&<a href="https://instagram.com/explore/tags/123" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;作用范围&<a href="https://instagram.com/explore/tags/125" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;s/&<a href="https://instagram.com/explore/tags/123" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;目标&<a href="https://instagram.com/explore/tags/125" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;/&<a href="https://instagram.com/explore/tags/123" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;替换&<a href="https://instagram.com/explore/tags/125" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;/&<a href="https://instagram.com/explore/tags/123" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;替换标志&<a href="https://instagram.com/explore/tags/125" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;</span><br></pre></td></tr></table></figure>
-
-<p>例如<code>:%s/foo/bar/g</code>会在全局范围(<code>%</code>)查找<code>foo</code>并替换为<code>bar</code>，所有出现都会被替换（<code>g</code>）。</p>
-<h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><p>作用范围分为当前行、全文、选区等等。</p>
-<p>当前行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:s/foo/bar/g</span><br></pre></td></tr></table></figure>
-
-<p>全文：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/foo/bar/g</span><br></pre></td></tr></table></figure>
-
-<p>选区，在Visual模式下选择区域后输入<code>:</code>，Vim即可自动补全为 <code>:&#39;&lt;,&#39;&gt;</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:&apos;&lt;,&apos;&gt;s/foo/bar/g</span><br></pre></td></tr></table></figure>
-
-<p>2-11行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:5,12s/foo/bar/g</span><br></pre></td></tr></table></figure>
-
-<p>当前行<code>.</code>与接下来两行<code>+2</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:.,+2s/foo/bar/g</span><br></pre></td></tr></table></figure>
-
-<h3 id="替换标志"><a href="#替换标志" class="headerlink" title="替换标志"></a>替换标志</h3><p>上文中命令结尾的<code>g</code>即是替换标志之一，表示全局<code>global</code>替换（即替换目标的所有出现）。 还有很多其他有用的替换标志：</p>
-<p>空替换标志表示只替换从光标位置开始，目标的第一次出现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/foo/bar</span><br></pre></td></tr></table></figure>
-
-<p><code>i</code>表示大小写不敏感查找，<code>I</code>表示大小写敏感：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:%s/foo/bar/i</span><br><span class="line"># 等效于模式中的\c（不敏感）或\C（敏感）</span><br><span class="line">:%s/foo\c/bar</span><br></pre></td></tr></table></figure>
-
-<p><code>c</code>表示需要确认，例如全局查找<code>&quot;foo&quot;</code>替换为<code>&quot;bar&quot;</code>并且需要确认：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/foo/bar/gc</span><br></pre></td></tr></table></figure>
-
-<p>回车后Vim会将光标移动到每一次<code>&quot;foo&quot;</code>出现的位置，并提示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace with bar (y/n/a/q/l/^E/^Y)?</span><br></pre></td></tr></table></figure>
-
-<p>按下<code>y</code>表示替换，<code>n</code>表示不替换，<code>a</code>表示替换所有，<code>q</code>表示退出查找模式， <code>l</code>表示替换当前位置并退出。<code>^E</code>与<code>^Y</code>是光标移动快捷键，参考： <a href="https://harttle.land/2015/11/07/vim-cursor.html" target="_blank" rel="noopener">Vim中如何快速进行光标移动</a>。</p>
+      		<h2 id="14个提高代码质量的好问题"><a href="#14个提高代码质量的好问题" class="headerlink" title="14个提高代码质量的好问题"></a>14个提高代码质量的好问题</h2><p><strong>并不是代码写的越多，代码的质量就越高。思考才是</strong>。</p>
+<p>解决一个问题，打开电脑就手撕代码，最终的结果往往是各种代码问题，经过一系列迭代后，代码积重难返，最终的结果就是推到重来，前期的付出都白费，最典型的就是现在所谓的敏捷，听起来高大上，实际落地其实就是加班，因为没有时间思考。</p>
+<p>现在的很多公司已经不尊重科学和客观规律了，如果让他来管理孕妇，我觉得他们恨不得要把 10 个月的产期缩短成 2 个月。</p>
+<p><strong>程序员应该坚持自己的良质，不能因为产品经理或老板而改变一些非常好的做事方法，很多问题都是可以通过沟通解决的</strong>，面对复杂的需求工期又特别短，不妨听下陈皓老师（网名：左耳朵耗子）的方法：不要说不，而是给对方选择：</p>
+<p>1、我可以加班加点完成，但是我不保证好的质量，有 bug 你得认，而且事后你要给我 1 个月的时间还债。</p>
+<p>2、我可以加班加点，还能保证质量，但我没办法完成这么多需求，能不能减少一些？</p>
+<p>3、我可以保质保量地完成所有的需求，但是，能不能多给我 2 周时间？</p>
+<p>看到这里，我想你也一定会认为：除了编程，沟通也是一门艺术。</p>
+<p>这两天学到了王争的专栏《设计模式之美》，其中提到的如何发现代码质量问题，可以从以下几个方面审视代码：</p>
+<ol>
+<li>目录设置是否合理、模块划分是否清晰、代码结构是否满足“高内聚、松耦合”？</li>
+<li>是否遵循经典的设计原则和设计思想（SOLID、DRY、KISS、YAGNI、LOD 等）？</li>
+<li>设计模式是否应用得当？是否有过度设计？</li>
+<li>代码是否容易扩展？如果要添加新功能，是否容易实现？</li>
+<li>代码是否可以复用？是否可以复用已有的项目代码或类库？是否有重复造轮子？</li>
+<li>代码是否容易测试？单元测试是否全面覆盖了各种正常和异常的情况？</li>
+<li>代码是否易读？是否符合编码规范（比如命名和注释是否恰当、代码风格是否一致等）？</li>
+</ol>
+<p>以上是一些通用的关注点，可以作为常规检查项，套用在任何代码的重构上。除此之外，我们还要关注代码实现是否满足业务本身特有的功能和非功能需求。还有一些比较有共性的问题，如下所示。</p>
+<ol>
+<li>代码是否实现了预期的业务需求？</li>
+<li>逻辑是否正确？是否处理了各种异常情况？</li>
+<li>日志打印是否得当？是否方便 debug 排查问题？</li>
+<li>接口是否易用？是否支持幂等、事务等？</li>
+<li>代码是否存在并发问题？是否线程安全？</li>
+<li>性能是否有优化空间，比如，SQL、算法是否可以优化？</li>
+<li>是否有安全漏洞？比如输入输出校验是否全面？</li>
+</ol>
+<p>当看到这些时，我只觉得醍醐灌顶，写代码并不难，难的是写出好代码，什么是好代码，质量高的代码？以上 14 条问题给我们指明了方向。</p>
+<p>以上共 14 个方面值得打印出来贴在桌子上，作为我们日常写代码的一个提示，解决这些问题过程虽然耗时，假以时日，我们一定可以写出非常优秀的代码，成为优秀的工程师。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2019/10/29/PyCon China2019初体验/" style="float: left;">
-        ← 
-    </a>
     
-    
-    <a class="pull-right" href="/2019/09/24/python-decorator/">
-        Python 装饰器 →
+    <a class="pull-right" href="/2019/10/29/PyCon China2019初体验/">
+         →
     </a>
     
 </nav>
