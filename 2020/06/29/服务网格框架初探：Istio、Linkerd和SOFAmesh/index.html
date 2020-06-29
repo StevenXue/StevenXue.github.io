@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>14个提高代码质量的好问题 | 石头记</title>
+  <title>服务网格框架初探：Istio、Linkerd和SOFAmesh | 石头记</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,63 +173,83 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2020-04-20T13:11:46.000Z" itemprop="datePublished">
-          2020-04-20
+      <time datetime="2020-06-29T12:07:55.000Z" itemprop="datePublished">
+          2020-06-29
       </time>
     
     
     | 
-    <a href='/tags/Code/'>Code</a>
+    <a href='/tags/micro-services/'>micro-services</a>
     
     
 </span>
-                <h1>14个提高代码质量的好问题</h1>
+                <h1>服务网格框架初探：Istio、Linkerd和SOFAmesh</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="14个提高代码质量的好问题"><a href="#14个提高代码质量的好问题" class="headerlink" title="14个提高代码质量的好问题"></a>14个提高代码质量的好问题</h2><p><strong>并不是代码写的越多，代码的质量就越高。思考才是</strong>。</p>
-<p>解决一个问题，打开电脑就手撕代码，最终的结果往往是各种代码问题，经过一系列迭代后，代码积重难返，最终的结果就是推到重来，前期的付出都白费，最典型的就是现在所谓的敏捷，听起来高大上，实际落地其实就是加班，因为没有时间思考。</p>
-<p>现在的很多公司已经不尊重科学和客观规律了，如果让他来管理孕妇，我觉得他们恨不得要把 10 个月的产期缩短成 2 个月。</p>
-<p><strong>程序员应该坚持自己的良质，不能因为产品经理或老板而改变一些非常好的做事方法，很多问题都是可以通过沟通解决的</strong>，面对复杂的需求工期又特别短，不妨听下陈皓老师（网名：左耳朵耗子）的方法：不要说不，而是给对方选择：</p>
-<p>1、我可以加班加点完成，但是我不保证好的质量，有 bug 你得认，而且事后你要给我 1 个月的时间还债。</p>
-<p>2、我可以加班加点，还能保证质量，但我没办法完成这么多需求，能不能减少一些？</p>
-<p>3、我可以保质保量地完成所有的需求，但是，能不能多给我 2 周时间？</p>
-<p>看到这里，我想你也一定会认为：除了编程，沟通也是一门艺术。</p>
-<p>这两天学到了王争的专栏《设计模式之美》，其中提到的如何发现代码质量问题，可以从以下几个方面审视代码：</p>
-<ol>
-<li>目录设置是否合理、模块划分是否清晰、代码结构是否满足“高内聚、松耦合”？</li>
-<li>是否遵循经典的设计原则和设计思想（SOLID、DRY、KISS、YAGNI、LOD 等）？</li>
-<li>设计模式是否应用得当？是否有过度设计？</li>
-<li>代码是否容易扩展？如果要添加新功能，是否容易实现？</li>
-<li>代码是否可以复用？是否可以复用已有的项目代码或类库？是否有重复造轮子？</li>
-<li>代码是否容易测试？单元测试是否全面覆盖了各种正常和异常的情况？</li>
-<li>代码是否易读？是否符合编码规范（比如命名和注释是否恰当、代码风格是否一致等）？</li>
-</ol>
-<p>以上是一些通用的关注点，可以作为常规检查项，套用在任何代码的重构上。除此之外，我们还要关注代码实现是否满足业务本身特有的功能和非功能需求。还有一些比较有共性的问题，如下所示。</p>
-<ol>
-<li>代码是否实现了预期的业务需求？</li>
-<li>逻辑是否正确？是否处理了各种异常情况？</li>
-<li>日志打印是否得当？是否方便 debug 排查问题？</li>
-<li>接口是否易用？是否支持幂等、事务等？</li>
-<li>代码是否存在并发问题？是否线程安全？</li>
-<li>性能是否有优化空间，比如，SQL、算法是否可以优化？</li>
-<li>是否有安全漏洞？比如输入输出校验是否全面？</li>
-</ol>
-<p>当看到这些时，我只觉得醍醐灌顶，写代码并不难，难的是写出好代码，什么是好代码，质量高的代码？以上 14 条问题给我们指明了方向。</p>
-<p>以上共 14 个方面值得打印出来贴在桌子上，作为我们日常写代码的一个提示，解决这些问题过程虽然耗时，假以时日，我们一定可以写出非常优秀的代码，成为优秀的工程师。</p>
+      		<p><strong>导读</strong></p>
+<p>2018年，Service Mesh在国内大热，有多家公司推出自己的Service Mesh产品和方案。本篇文章结合Service Mesh领域内关注度较高的几种开源方案，从架构层面出发，进行初步解读。</p>
+<p><strong>服务网格（ServiceMesh）是什么？</strong></p>
+<p>Willian Morgan——Bouyant CEO给出的 Service  Mesh 定义：</p>
+<p>服务网格是一个用于处理服务间通信的基础设施层，它负责为构建复杂的云原生应用传递可靠的网络请求。在实践中，服务网格通常实现一组和应用程序部署在一起的轻量级的网络代理，但对应用程序来说是透明的。</p>
+<p>具体来说，Service Mesh 是服务的前置代理层的实现，采用 sidecar 设计模式，用来管理 inbound 和 outbound 流量，并且针对拦截的流量和具体配置，实现路由转发，策略控制，认证授权，数据监测等功能。将与业务服务紧密结合的外围支撑组件从服务组件中剥离，形成独立的基础设施层，进而让服务回归业务本身，不再考虑外围支撑，实现真正的服务无关性、无侵入式治理。</p>
+<p>由于目前社区对 Service Mesh 实现都基于容器之上实现，因此本文中重点介绍 基于Kubernetes 的 Service Mesh 方案，并对其中的优劣势做出对比说明。目前社区比较活跃的 Service Mesh 实现主要有3个：Linkerd2、Istio、SOFAMesh。</p>
+<p><strong>服务网格对比</strong></p>
+<p><strong>Linkerd2</strong></p>
+<p>Linkerd是基于 Kubernetes 和其他框架的服务网格。它通过为你提供运行时调试，可观察性，可靠性和安全性，使运行服务更容易，更安全，而无需对代码进行任何更改。</p>
+<p><strong>Istio</strong></p>
+<p>Istio 有助于降低这些部署的复杂性，并减轻开发团队的压力。它是一个完全开源的服务网格，可以透明地分层到现有的分布式应用程序上。它也是一个平台，包括允许它集成到任何日志记录平台、遥测或策略系统的 API。Istio的多样化功能集使你能够成功高效地运行分布式微服务架构，并提供保护、连接和监控微服务的统一方法。</p>
+<p><strong>SOFAMesh</strong></p>
+<p>SOFAMesh 是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案 。</p>
+<p><strong>架构</strong></p>
+<p><strong>Linkerd2</strong></p>
+<p><img src="/assets/Linkerd2_acr.png" alt></p>
+<p>Linkerd2  整体上分为数据平面和控制平面两部分。为了能够更好的契合Kubernetes 容器环境，基于 Rust 和 Golang 重写 Linkerd 所有功能组件，主要包括控制器，管理控制台，数据采集器，数据展示平台。</p>
+<p><strong>控制器</strong>（Controller）</p>
+<p>控制器部分有多个容器（public-api，tap，destination，proxy-api）组成，这些容器提供了控制平面的大部分功能。</p>
+<p><strong>管理控制台</strong>（Web）</p>
+<p>提供 Linkerd2 对外呈现的 Dashboard，方便运维人员以可视化的方式实时查看服务运行状态。</p>
+<p><strong>数据采集器</strong>（Prometheus）</p>
+<p>Linkerd2 中 Prometheus 组件和开源 Prometheus 组件区别在于，Linkerd2中 Prometheus 针对 Linkerd2 的特殊实现，Linkerd2 中公开的所有监测指标都通过 Prometheus 进行操作，并且完成数据的持久化存储。</p>
+<p><strong>数据展示平台</strong>（Grafana）</p>
+<p>Grafana 与 Prometheus 集成，作为 Linkerd2 收集的性能监测数据可视化展示平台。</p>
+<p><strong>Istio</strong></p>
+<p><img src="/assets/Istio%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt></p>
+<p>Istio 在架构上同样分为数据平面和控制平面。数据平面有 Proxy 代理，具体有 Envoy 实现，用于协调所有服务的 inbound 和 outbound 流量。控制层面由Pilot，Mixer，Citadel，Galley 组成。用来管理和配置代理理由策略，同时通过 Mixer 用来实时策略和收集遥测数据。</p>
+<p><strong>Envoy</strong> </p>
+<p>Envoy 被部署为 sidecar，和对应服务在同一个 Kubernetes pod 中，管理管理所有服务的入站和出站流量，提供服务发现，负载均衡，熔断，故障注入，超时等功能。同时由于和服务处于同一个 pod 中，Istio 能够将大量流量行为信号作为属性提取出来，这些属性可以和 Mixer 关联，并且发送给监控系统，提供整个服务网格行为的信息。</p>
+<p><strong>Pilot</strong> </p>
+<p>Pilot  将平台特定的服务发现机制抽象化并提炼出数据平面  API，屏蔽与sidecar 的直接对接，进一步实现配置管理的标准化。这样的抽象行为确保 Istio能够在多种环境下运行（例如 Kubernetes，Consul，Nomad），同时保持用于流量管理的相同操作界面。</p>
+<p><strong>Mixer</strong></p>
+<p>Mixer 是独立于平台的组件，可以在部署的时候选择性部署。负责在服务网格上执行访问控制和使用策略，并从 Envoy 代理和其他服务收集遥测数据。Mixer同时提供了可插拔式的插件模型，使得能够对接各种主机和基础设施后端。</p>
+<p><strong>Citadel</strong></p>
+<p>Citadel 通过内置身份和凭证管理赋能服务间和最终用户的身份认证。</p>
+<p><strong>Galley</strong>（暂时接触少）</p>
+<p>Galley 代表其他的 Istio 控制平面组件，用来验证用户编写的 Istio API 配置。随着时间的推移，Galley 将接管 Istio 获取配置、处理和分配组件的顶级责任。</p>
+<p><strong>SOFAMesh</strong></p>
+<p><img src="/assets/sofa-mesh-arch.png" alt></p>
+<p>从 SOFAMesh 架构图可以看出，SOFAMesh 源自 Istio，区别在于 SOFAMesh 在继承 Istio 强大的功能和丰富特性的基础上，根据阿里的实践经验做了以下增强：</p>
+<ul>
+<li>采用 Golang 编写的 MOSN(Modular Observable Smart Net-stub)取代 Enovy，同时保证完全兼容 Envoy  API；</li>
+<li>合并 Istio 中 Mixer 组件的 check  policy 功能到数据平面，有效解决大规模服务部署情况下，Mixer 一级缓存在进行策略检查时引发的“笛卡尔积问题”，同时保留 Mixer 中遥测数据上报的功能。</li>
+<li>针对客户的实际使用情况，增强 Pilot 的服务发现能力，在保留原有能力基础上，增加对 Dubbo，SOFA  Registry 的支持，后续将进一步增加对 Zookeeper 支持；</li>
+<li>增加数据同步模块，实现多个服务注册中心数据同步；</li>
+<li>增加 Open ServiceRegistry  API，提供标准化的服务注册功能；</li>
+<li>支持更多的协议处理（SOFA  RPC、DUBBO  RPC 等）。</li>
+</ul>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2020/06/20/SpringCloud项目简介/" style="float: left;">
-        ← SpringCloud项目简介
+    <a class="pull-left" href="/2020/06/29/微服务架构浅谈/" style="float: left;">
+        ← 微服务架构浅谈
     </a>
     
     
-    <a class="pull-right" href="/2019/10/29/PyCon China2019初体验/">
-        PyCon China2019初体验 →
+    <a class="pull-right" href="/2020/06/20/SpringCloud项目简介/">
+        SpringCloud项目简介 →
     </a>
     
 </nav>

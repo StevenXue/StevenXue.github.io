@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>14个提高代码质量的好问题 | 石头记</title>
+  <title>Archives: 2020/6 | 石头记</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,127 +167,87 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2020-04-20T13:11:46.000Z" itemprop="datePublished">
-          2020-04-20
-      </time>
-    
-    
-    | 
-    <a href='/tags/Code/'>Code</a>
-    
-    
-</span>
-                <h1>14个提高代码质量的好问题</h1>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
             </div>
+            <!-- // .col-md-12 -->
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<h2 id="14个提高代码质量的好问题"><a href="#14个提高代码质量的好问题" class="headerlink" title="14个提高代码质量的好问题"></a>14个提高代码质量的好问题</h2><p><strong>并不是代码写的越多，代码的质量就越高。思考才是</strong>。</p>
-<p>解决一个问题，打开电脑就手撕代码，最终的结果往往是各种代码问题，经过一系列迭代后，代码积重难返，最终的结果就是推到重来，前期的付出都白费，最典型的就是现在所谓的敏捷，听起来高大上，实际落地其实就是加班，因为没有时间思考。</p>
-<p>现在的很多公司已经不尊重科学和客观规律了，如果让他来管理孕妇，我觉得他们恨不得要把 10 个月的产期缩短成 2 个月。</p>
-<p><strong>程序员应该坚持自己的良质，不能因为产品经理或老板而改变一些非常好的做事方法，很多问题都是可以通过沟通解决的</strong>，面对复杂的需求工期又特别短，不妨听下陈皓老师（网名：左耳朵耗子）的方法：不要说不，而是给对方选择：</p>
-<p>1、我可以加班加点完成，但是我不保证好的质量，有 bug 你得认，而且事后你要给我 1 个月的时间还债。</p>
-<p>2、我可以加班加点，还能保证质量，但我没办法完成这么多需求，能不能减少一些？</p>
-<p>3、我可以保质保量地完成所有的需求，但是，能不能多给我 2 周时间？</p>
-<p>看到这里，我想你也一定会认为：除了编程，沟通也是一门艺术。</p>
-<p>这两天学到了王争的专栏《设计模式之美》，其中提到的如何发现代码质量问题，可以从以下几个方面审视代码：</p>
-<ol>
-<li>目录设置是否合理、模块划分是否清晰、代码结构是否满足“高内聚、松耦合”？</li>
-<li>是否遵循经典的设计原则和设计思想（SOLID、DRY、KISS、YAGNI、LOD 等）？</li>
-<li>设计模式是否应用得当？是否有过度设计？</li>
-<li>代码是否容易扩展？如果要添加新功能，是否容易实现？</li>
-<li>代码是否可以复用？是否可以复用已有的项目代码或类库？是否有重复造轮子？</li>
-<li>代码是否容易测试？单元测试是否全面覆盖了各种正常和异常的情况？</li>
-<li>代码是否易读？是否符合编码规范（比如命名和注释是否恰当、代码风格是否一致等）？</li>
-</ol>
-<p>以上是一些通用的关注点，可以作为常规检查项，套用在任何代码的重构上。除此之外，我们还要关注代码实现是否满足业务本身特有的功能和非功能需求。还有一些比较有共性的问题，如下所示。</p>
-<ol>
-<li>代码是否实现了预期的业务需求？</li>
-<li>逻辑是否正确？是否处理了各种异常情况？</li>
-<li>日志打印是否得当？是否方便 debug 排查问题？</li>
-<li>接口是否易用？是否支持幂等、事务等？</li>
-<li>代码是否存在并发问题？是否线程安全？</li>
-<li>性能是否有优化空间，比如，SQL、算法是否可以优化？</li>
-<li>是否有安全漏洞？比如输入输出校验是否全面？</li>
-</ol>
-<p>当看到这些时，我只觉得醍醐灌顶，写代码并不难，难的是写出好代码，什么是好代码，质量高的代码？以上 14 条问题给我们指明了方向。</p>
-<p>以上共 14 个方面值得打印出来贴在桌子上，作为我们日常写代码的一个提示，解决这些问题过程虽然耗时，假以时日，我们一定可以写出非常优秀的代码，成为优秀的工程师。</p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2020/06/20/SpringCloud项目简介/" style="float: left;">
-        ← SpringCloud项目简介
-    </a>
-    
-    
-    <a class="pull-right" href="/2019/10/29/PyCon China2019初体验/">
-        PyCon China2019初体验 →
-    </a>
-    
-</nav>
-
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("<a href="https://changyan.sohu.com/upload/changyan.js" class="linker linker-url" target="_blank" rel="noopener noreferrer">https://changyan.sohu.com/upload/changyan.js</a>", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-</div>
+        <div class="herofade beige-dk"></div>
     </div>
 </section>
 
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
 
+<!-- ============================ END Hero Image =========================== -->
+
+
+
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row boxes">
+                    
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2020/06/29/微服务架构浅谈/">微服务架构浅谈</a></h4>
+                            
+                            <p><time datetime="2020-06-29T12:11:29.000Z"><a href="/2020/06/29/微服务架构浅谈/">2020-06-29</a></time></p>
+                        </div>
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2020/06/29/服务网格框架初探：Istio、Linkerd和SOFAmesh/">服务网格框架初探：Istio、Linkerd和SOFAmesh</a></h4>
+                            
+                            <p><time datetime="2020-06-29T12:07:55.000Z"><a href="/2020/06/29/服务网格框架初探：Istio、Linkerd和SOFAmesh/">2020-06-29</a></time></p>
+                        </div>
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2020/06/20/SpringCloud项目简介/">SpringCloud项目简介</a></h4>
+                            
+                            <p><time datetime="2020-06-20T12:37:05.000Z"><a href="/2020/06/20/SpringCloud项目简介/">2020-06-20</a></time></p>
+                        </div>
+                    
+                </div>
+            </div>    
+        </div>
+    </div>
+</section> 
+
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+        </div>
+    </div>
+</section>
       
 <!-- ============================ Footer =========================== -->
 

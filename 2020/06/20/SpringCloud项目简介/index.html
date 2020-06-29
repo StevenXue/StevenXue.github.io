@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>14个提高代码质量的好问题 | 石头记</title>
+  <title>SpringCloud项目简介 | 石头记</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,63 +173,75 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2020-04-20T13:11:46.000Z" itemprop="datePublished">
-          2020-04-20
+      <time datetime="2020-06-20T12:37:05.000Z" itemprop="datePublished">
+          2020-06-20
       </time>
     
     
     | 
-    <a href='/tags/Code/'>Code</a>
+    <a href='/tags/micro-services/'>micro-services</a>
     
     
 </span>
-                <h1>14个提高代码质量的好问题</h1>
+                <h1>SpringCloud项目简介</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="14个提高代码质量的好问题"><a href="#14个提高代码质量的好问题" class="headerlink" title="14个提高代码质量的好问题"></a>14个提高代码质量的好问题</h2><p><strong>并不是代码写的越多，代码的质量就越高。思考才是</strong>。</p>
-<p>解决一个问题，打开电脑就手撕代码，最终的结果往往是各种代码问题，经过一系列迭代后，代码积重难返，最终的结果就是推到重来，前期的付出都白费，最典型的就是现在所谓的敏捷，听起来高大上，实际落地其实就是加班，因为没有时间思考。</p>
-<p>现在的很多公司已经不尊重科学和客观规律了，如果让他来管理孕妇，我觉得他们恨不得要把 10 个月的产期缩短成 2 个月。</p>
-<p><strong>程序员应该坚持自己的良质，不能因为产品经理或老板而改变一些非常好的做事方法，很多问题都是可以通过沟通解决的</strong>，面对复杂的需求工期又特别短，不妨听下陈皓老师（网名：左耳朵耗子）的方法：不要说不，而是给对方选择：</p>
-<p>1、我可以加班加点完成，但是我不保证好的质量，有 bug 你得认，而且事后你要给我 1 个月的时间还债。</p>
-<p>2、我可以加班加点，还能保证质量，但我没办法完成这么多需求，能不能减少一些？</p>
-<p>3、我可以保质保量地完成所有的需求，但是，能不能多给我 2 周时间？</p>
-<p>看到这里，我想你也一定会认为：除了编程，沟通也是一门艺术。</p>
-<p>这两天学到了王争的专栏《设计模式之美》，其中提到的如何发现代码质量问题，可以从以下几个方面审视代码：</p>
-<ol>
-<li>目录设置是否合理、模块划分是否清晰、代码结构是否满足“高内聚、松耦合”？</li>
-<li>是否遵循经典的设计原则和设计思想（SOLID、DRY、KISS、YAGNI、LOD 等）？</li>
-<li>设计模式是否应用得当？是否有过度设计？</li>
-<li>代码是否容易扩展？如果要添加新功能，是否容易实现？</li>
-<li>代码是否可以复用？是否可以复用已有的项目代码或类库？是否有重复造轮子？</li>
-<li>代码是否容易测试？单元测试是否全面覆盖了各种正常和异常的情况？</li>
-<li>代码是否易读？是否符合编码规范（比如命名和注释是否恰当、代码风格是否一致等）？</li>
-</ol>
-<p>以上是一些通用的关注点，可以作为常规检查项，套用在任何代码的重构上。除此之外，我们还要关注代码实现是否满足业务本身特有的功能和非功能需求。还有一些比较有共性的问题，如下所示。</p>
-<ol>
-<li>代码是否实现了预期的业务需求？</li>
-<li>逻辑是否正确？是否处理了各种异常情况？</li>
-<li>日志打印是否得当？是否方便 debug 排查问题？</li>
-<li>接口是否易用？是否支持幂等、事务等？</li>
-<li>代码是否存在并发问题？是否线程安全？</li>
-<li>性能是否有优化空间，比如，SQL、算法是否可以优化？</li>
-<li>是否有安全漏洞？比如输入输出校验是否全面？</li>
-</ol>
-<p>当看到这些时，我只觉得醍醐灌顶，写代码并不难，难的是写出好代码，什么是好代码，质量高的代码？以上 14 条问题给我们指明了方向。</p>
-<p>以上共 14 个方面值得打印出来贴在桌子上，作为我们日常写代码的一个提示，解决这些问题过程虽然耗时，假以时日，我们一定可以写出非常优秀的代码，成为优秀的工程师。</p>
+      		<h2 id="SpringCloud项目简介"><a href="#SpringCloud项目简介" class="headerlink" title="SpringCloud项目简介"></a>SpringCloud项目简介</h2><blockquote>
+<p>​     <strong><em>因为SpringCloud的流行很多人就把SpringCloud等同于微服务，这也没有错共识的人多了就是对的。准确点说SpringCloud是适合实现微服务的一套基础框架，SpringCloud有助于讯速的落地<a href="http://msd.misuland.com/pd/3255818169394138454" target="_blank" rel="noopener">微服务架构</a>。SpringCloud是以Java库的形式工作所以它的工作层面是在应用层（研发层）。</em></strong></p>
+<p>​     <strong><em>SpringCloud通过提供一篮子解决方案来应对微服务中的各种需求和通点，通过Eureka提供服务注册与发现，Ribbon实现客户端的负载均衡，Feign牛逼的将REST变成强类型的接口调用，Config提供方便但不灵活的配置中心，Hystrix提供熔断方案，Zuul提供网关方案等。</em></strong>　</p>
+<p> 微服务是互联网时代的产物而SOA是系统集成的产物，微服务是对系统的打散而SOA是对系统的整合。</p>
+</blockquote>
+<p>​      SpringCloud是基于SpringBoot的一整套实现微服务的框架。他提供了微服务开发所需的配置管理、服务发现、断路器、智能路由、微代理、控制总线、全局锁、决策竞选、分布式会话和集群状态管理等组件。最重要的是，跟spring boot框架一起使用的话，会让你开发微服务架构的云服务非常好的方便。</p>
+<p>SpringBoot旨在简化创建产品级的 Spring 应用和服务，简化了配置文件，使用嵌入式web服务器，含有诸多开箱即用微服务功能</p>
+<p>spring cloud子项目包括：</p>
+<p>Spring Cloud Config：配置管理开发工具包，可以让你把配置放到远程服务器，目前支持本地存储、Git以及Subversion。</p>
+<p>Spring Cloud Bus：事件、消息总线，用于在集群（例如，配置变化事件）中传播状态变化，可与Spring Cloud Config联合实现热部署。</p>
+<p>Spring Cloud Netflix：针对多种Netflix组件提供的开发工具包，其中包括Eureka、Hystrix、Zuul、Archaius等。</p>
+<p>Netflix Eureka：云端负载均衡，一个基于 REST 的服务，用于定位服务，以实现云端的负载均衡和中间层服务器的故障转移。</p>
+<p>Netflix Hystrix：容错管理工具，旨在通过控制服务和第三方库的节点,从而对延迟和故障提供更强大的容错能力。</p>
+<p>Netflix Zuul：边缘服务工具，是提供动态路由，监控，弹性，安全等的边缘服务。</p>
+<p>Netflix Archaius：配置管理API，包含一系列配置管理API，提供动态类型化属性、线程安全配置操作、轮询框架、回调机制等功能。</p>
+<p>Spring Cloud for Cloud Foundry：通过Oauth2协议绑定服务到CloudFoundry，CloudFoundry是VMware推出的开源PaaS云平台。</p>
+<p>Spring Cloud Sleuth：日志收集工具包，封装了Dapper,Zipkin和HTrace操作。</p>
+<p>Spring Cloud Data Flow：大数据操作工具，通过命令行方式操作数据流。</p>
+<p>Spring Cloud Security：安全工具包，为你的应用程序添加安全控制，主要是指OAuth2。</p>
+<p>Spring Cloud Consul：封装了Consul操作，consul是一个服务发现与配置工具，与Docker容器可以无缝集成。</p>
+<p>Spring Cloud Zookeeper：操作Zookeeper的工具包，用于使用zookeeper方式的服务注册和发现。</p>
+<p>Spring Cloud Stream：数据流操作开发包，封装了与Redis,Rabbit、Kafka等发送接收消息。</p>
+<p>Spring Cloud CLI：基于 Spring Boot CLI，可以让你以命令行方式快速建立云组件。</p>
+<p>微服务架构图：</p>
+<p><img src="/assets/SpringClound.png" alt></p>
+<p>1、Sleuth-链路跟踪</p>
+<p>为服务之间调用提供链路追踪。通过Sleuth可以很清楚的了解到一个服务请求经过了哪些服务，每个服务处理花费了多长。从而让我们可以很方便的理清各微服务间的调用关系。</p>
+<p>2、断路器（Hystrix）</p>
+<p>在微服务架构中，根据业务来拆分成一个个的服务，服务与服务之间可以相互调用（RPC），在Spring Cloud可以用RestTemplate+Ribbon和Feign来调用。为了保证其高可用，单个服务通常会集群部署。由于网络原因或者自身的原因，服务并不能保证100%可用，如果单个服务出现问题，调用这个服务就会出现线程阻塞，此时若有大量的请求涌入，Servlet容器的线程资源会被消耗完毕，导致服务瘫痪。服务与服务之间的依赖性，故障会传播，会对整个微服务系统造成灾难性的严重后果，这就是服务故障的“雪崩”效应。Netflix开源了Hystrix组件，实现了断路器模式，SpringCloud对这一组件进行了整合</p>
+<p>3、Turbine集群监控<br>Turbine 是聚合服务器发送事件流数据的一个工具，用来监控集群下 hystrix 的 metrics 情况。<br>通过turbine可以监控集群的请求量，可以知道系统的请求高峰期，从而更好的知道系统的短板在哪里。</p>
+<p>4、Consul服务治理 和Eureka服务治理</p>
+<p>由于Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，比如：Netflix Eureka、Consul、Zookeeper。<br>Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个分布式高可用的系统，它包含多个组件，但是作为一个整体，在微服务架构中为我们的基础设施提供服务发现和服务配置的工具。它包含了下面几个特性： 服务发现、 健康检查、 Key/Value存储、 多数据中心。由于Consul自身提供了服务端，所以我们不需要像之前实现Eureka的时候创建服务注册中心，直接通过下载consul的服务端程序就可以使用。Consul比Eureka注册支持的更多一些。</p>
+<p>5、config配置管理</p>
+<p>引入spring cloud config后，我们的外部配置文件就可以集中放置在一个git仓库里，再新建一个config server，用来管理所有的配置文件，维护的时候需要更改配置时，只需要在本地更改后，推送到远程仓库，所有的服务实例都可以通过config server来获取配置文件，这时每个服务实例就相当于配置服务的客户端config client,为了保证系统的稳定，配置服务端config server可以进行集群部署</p>
+<p>6、Nginx</p>
+<p>用来做反向代理、负载均衡，当有请求的时候，根据配置的调度策略（加权轮询、IP哈希、最少连接数、一致性哈希）给请求者返回相应的服务器IP。</p>
+<p>7、Zuul服务网关<br>zuul的核心是一系列的filters, 其作用可以类比Servlet框架的Filter<br>Zuul的主要功能是路由和过滤器。是各种服务的统一入口，同时还会用来提供监控、授权、安全、调度等等；可以通过扩展ZuulFilter，在执行方法之前，做各种检查工作。</p>
+<p>三： SpringCloud特点<br>1：约定优于配置</p>
+<p>2：开箱即用、快速启动</p>
+<p>3：适用于各种环境</p>
+<p>4：轻量级的组件</p>
+<p>5：组件支持丰富，功能齐全<br>————————————————<br>版权声明：本文为CSDN博主「程序猿的编程日记」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wujian_csdn_csdn/article/details/81701320" target="_blank" rel="noopener">https://blog.csdn.net/wujian_csdn_csdn/article/details/81701320</a></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2020/06/20/SpringCloud项目简介/" style="float: left;">
-        ← SpringCloud项目简介
+    <a class="pull-left" href="/2020/06/29/服务网格框架初探：Istio、Linkerd和SOFAmesh/" style="float: left;">
+        ← 服务网格框架初探：Istio、Linkerd和SOFAmesh
     </a>
     
     
-    <a class="pull-right" href="/2019/10/29/PyCon China2019初体验/">
-        PyCon China2019初体验 →
+    <a class="pull-right" href="/2020/04/20/14个提高代码质量的好问题/">
+        14个提高代码质量的好问题 →
     </a>
     
 </nav>
