@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives | 石头记</title>
+  <title>Redis过期键判断exists的问题 | 石头记</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,87 +167,112 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/09/24/web-develop-pattern/">APP 的三种 开发模式</a></h4>
-                            
-                            <p><time datetime="2019-09-24T10:37:05.000Z"><a href="/2019/09/24/web-develop-pattern/">2019-09-24</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/08/22/你应该学点哲学的20个理由：不为拥有深奥的思想，只为更好地生活/">你应该学点哲学的20个理由：不为拥有深奥的思想，只为更好地生活</a></h4>
-                            
-                            <p><time datetime="2019-08-22T11:37:05.000Z"><a href="/2019/08/22/你应该学点哲学的20个理由：不为拥有深奥的思想，只为更好地生活/">2019-08-22</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2019/08/20/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2019-08-20T14:37:05.000Z"><a href="/2019/08/20/hello-world/">2019-08-20</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-12-01T07:27:00.000Z" itemprop="datePublished">
+          2020-12-01
+      </time>
+    
+    
+    | 
+    <a href='/tags/Redis，内存处理/'>Redis，内存处理</a>
+    
+    
+</span>
+                <h1>Redis过期键判断exists的问题</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>今天我发现一个比较奇葩的问题，给大家分享一下为了避免后期产生的漏洞出现：</p>
+<p>最近我们发现一个比较奇葩的问题，给大家分享一下为了避免后期产生的漏洞出现：       </p>
+<p>我们有些项目组经常会使用 <code>redis</code> 中的 <code>exists</code> 命令来判断当前的key和数据值 是否存在 ，这个命令是要结合<strong>Redis</strong>内存处理机制 组合使用才能实现我们需求；</p>
+<ol>
+<li>单纯的默认方式 ，如果我们设置一个 10秒钟过期的 key 等过期之后 使用 exists key 命令 返回值依然是 1，  判断结果依然是true 的</li>
+</ol>
+<p>​       原因就是：当前的key并没有完全的从内存中删除 </p>
+<ol start="2">
+<li><p>要实现我们的需求我们需要参考配置文件中的 maxmemory-policy（最大内存策略）参数, 默认的配置方式是不让key过期的，具体配置内容说明如下：</p>
+<p><strong>最大内存策略</strong>，你有 以下几个选择：</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> MAXMEMORY POLICY: how Redis will select what to remove when maxmemory</span><br><span class="line"><span class="meta">#</span> is reached. You can select among five behaviors:</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> volatile-lru -&gt; remove the key with an expire set using an LRU algorithm</span><br><span class="line"><span class="meta">#</span> allkeys-lru -&gt; remove any key according to the LRU algorithm</span><br><span class="line"><span class="meta">#</span> volatile-random -&gt; remove a random key with an expire set</span><br><span class="line"><span class="meta">#</span> allkeys-random -&gt; remove a random key, any key</span><br><span class="line"><span class="meta">#</span> volatile-ttl -&gt; remove the key with the nearest expire time (minor TTL)</span><br><span class="line"><span class="meta">#</span> noeviction -&gt; don't expire at all, just return an error on write operations</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Note: with any of the above policies, Redis will return an error on write</span><br><span class="line"><span class="meta">#</span>       operations, when there are no suitable keys for eviction.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span>       At the date of writing these commands are: set setnx setex append</span><br><span class="line"><span class="meta">#</span>       incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd</span><br><span class="line"><span class="meta">#</span>       sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby</span><br><span class="line"><span class="meta">#</span>       zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby</span><br><span class="line"><span class="meta">#</span>       getset mset msetnx exec sort</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> The default is:</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> maxmemory-policy noeviction</span><br></pre></td></tr></table></figure>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+<p># volatile-lru -&gt; remove the key with an expire set using an LRU algorithm</p>
+<p># volatile-lru -&gt; 使用 LRU 算法移除包含过期设置的 key 。</p>
+<p># noeviction -&gt; don’t expire at all, just return an error on write operations</p>
+<p># noeviction -&gt; 不让任何 key 过期，只是给写入操作返回一个错误</p>
+<p>如果要实现我们的需求需要将其修改为：volatile-lru ，请大家相互检查相互通知~</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2020/07/02/Chrome之内网页面访问要求访问其登录页面/">
+        Chrome之内网页面访问要求访问其登录页面 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("<a href="https://changyan.sohu.com/upload/changyan.js" class="linker linker-url" target="_blank" rel="noopener noreferrer">https://changyan.sohu.com/upload/changyan.js</a>", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
