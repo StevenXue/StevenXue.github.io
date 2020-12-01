@@ -205,6 +205,44 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
+                    <h3><a href="/2020/12/01/微服务分解细则与要点/">微服务分解细则与要点</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2020-12-01T07:56:13.000Z" itemprop="datePublished">
+          2020-12-01
+      </time>
+    
+    
+    | 
+    <a href='/tags/微服务/'>微服务</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        在开发服务端企业应用时，应用需要支持各种不同类型的客户端，比如桌面浏览器、移动浏览器以及原生移动应用。应用还需要向第三方提供可访问的API，并通过Web Service或者消息代理与其它应用实现集成。应用通过执行业务逻辑、访问数据库、与其它系统交换信息、并返回一条HTML/JSON/XML响应，来处理请求（HTTP请求与消息）。
+应用采用多层架构或者六角架构，主要由以下几类不同组件构成：
+
+展现组件——负责处理HTTP请求并响应HTML
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2020/12/01/微服务分解细则与要点/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
                     <h3><a href="/2020/12/01/Redis过期键判断exists的问题/">Redis过期键判断exists的问题</a></h3>
                     <span>
                         <span class="post-meta">
@@ -223,11 +261,12 @@
                 <div class="col-md-8">
                     <p>
                       
-                        今天我发现一个比较奇葩的问题，给大家分享一下为了避免后期产生的漏洞出现：
-最近我们发现一个比较奇葩的问题，给大家分享一下为了避免后期产生的漏洞出现：       
+                        最近我们发现一个比较奇葩的问题，给大家分享一下为了避免后期产生的漏洞出现：       
 我们有些项目组经常会使用 redis 中的 exists 命令来判断当前的key和数据值 是否存在 ，这个命令是要结合Redis内存处理机制 组合使用才能实现我们需求；
 
-单纯的默认方式 ，如果我们设置一个 10秒钟过期的 key 等过期之后 使用 exists key 命令
+单纯的默认方式 ，如果我们设置一个 10秒钟过期的 key 等过期之后 使用 exists key 命令 返回值依然是 1，  判断结果依然是true 的
+
+​       原因
                       
                     </p>
                     
@@ -531,43 +570,6 @@ Vim查找支持正则表达式，例如/vim$匹配行尾的&quot;vim&quot;。 �
                     
                     <p class="pull-right readMore">
                         <a href="/2019/09/25/VIM-替换字符串命令/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2019/09/24/python-decorator/">Python 装饰器</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2019-09-24T11:37:05.000Z" itemprop="datePublished">
-          2019-09-24
-      </time>
-    
-    
-    | 
-    <a href='/tags/Python-Technology/'>Python, Technology</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        在面向对象（OOP）的设计模式中，decorator被称为装饰模式。OOP的装饰模式需要通过继承和组合来实现，而Python除了能支持OOP的decorator外，直接从语法层次支持decorator。Python的decorator可以用函数实现，也可以用类实现。
-decorator可以增强函数的功能，定义起来虽然有点复杂，但使用起来非常灵活和方便。
-装饰没有参数的函数123456789101112131415161718192021
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2019/09/24/python-decorator/">Read More...</a>
                     </p>
                     
                 </div>
