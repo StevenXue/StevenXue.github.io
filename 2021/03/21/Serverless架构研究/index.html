@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Serverless架构研究 | 石头记</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="石头记">
+    <meta name="author" content="Steven Xue">
+    <meta name="description" content="" />
+    <meta name="keywords" content="技术" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="石头记" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">石头记</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/StevenXue" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-03-21T07:23:13.000Z" itemprop="datePublished">
+          2021-03-21
+      </time>
+    
+    
+    | 
+    <a href='/tags/架构，Technology/'>架构，Technology</a>
+    
+    
+</span>
+                <h1>Serverless架构研究</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>Serverless是一种技术架构。按<code>AWS</code>官方对于Serverless的介绍：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无服务器架构是基于互联网的系统，其中应用开发不使用常规的服务进程。相反，它们仅依赖于第三方服务（例如AWS Lambda服务），客户端逻辑和服务托管远程过程调用的组合。</span><br></pre></td></tr></table></figure>
+
+<p>该技术的意义是：站在开发者的角度，自己不再关心IaaS层的基础设施的购买、运维、配置，也不关心自己应用的配置、部署、高可用这些PaaS层的东西，而是专注于实现业务逻辑的核心代码，其他的东西全部借助于公有云提供的服务实现。这种架构里，开发者自己并不接触Server，所以有了Serverless这个词。该模式下，开发者的效率是最高的，基本是100%的核心业务+0的业务支撑，而传统的IaaS架构里，我们在用20%的时间开发核心业务 + 80%的时间提供周边业务支撑。</p>
+<p>Serverless的技术最早来自于AWS在2014年推出的Lambda服务，该服务目前支持Javascript, Python和JVM系语言(Java、Clojure、Scala等)。</p>
+<h1 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h1><p>Serverless架构里使用到了两种技术：</p>
+<ul>
+<li>BaaS：Backend as a Service，如AWS RDS。BaaS可以认为是PaaS中提供纯服务的那部分Service。</li>
+<li>FaaS：Function as a Service，如AWS Lambda。</li>
+</ul>
+<p>FaaS中的Function就是我们需要100%专注的核心业务。Function又是由事件Event驱动的，再结合上公有云提供的BaaS的服务，我们就能实现出一套完整的业务架构。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">           +--------+        +--------+        +--------+</span><br><span class="line">  Request  |        | Event  |        |        |        |</span><br><span class="line">----------&gt;|  BaaS  |-------&gt;|Function|-------&gt;|  BaaS  |</span><br><span class="line">           |        |        |        |        |        |</span><br><span class="line">           +--------+        +--------+        +--------+</span><br></pre></td></tr></table></figure>
+
+<p><strong>FaaS(函数即服务)</strong> 的核心是</p>
+<ul>
+<li>核心业务代码Function，FaaS包含了运行核心代码的一切必要条件。</li>
+<li>Function通过Event得到触发，Event由FaaS框架定义。</li>
+<li>Function生命周期短，随时创建，运行完就销毁。如AWS的Lambda最长运行时间是5分钟。</li>
+<li>Function代码必须做到完全无状态。</li>
+<li>FaaS负责水平扩展问题。</li>
+</ul>
+<p>此处列举了部分常见的函数触发事件：</p>
+<p>​    1.HTTP触发器。</p>
+<p>​    2.日志服务触发器。</p>
+<p>​    3.定时触发器。</p>
+<p>​    4.CDN事件触发器。</p>
+<p>​    5.对象存储触发器。</p>
+<p>​    6.MNS主体触发器。</p>
+<p>​    7.API网关触发器。</p>
+<p>​    8.消息队列Kafka版Connector触发器</p>
+<p>​    不同的云服务厂商提供的触发事件上存在细微差别。</p>
+<p>​    函数计算是事件驱动的全托管计算服务。使用函数计算，你无需采购与管理服务器等基础设施，只需要编写并上传代码。函数计算为你准备好计算资源，弹性地、可靠地运行任务，并提供日志查询、性能监控和报警等功能。</p>
+<p>​    函数计算工作流程如下图所示（以阿里云为例）：</p>
+<p><img src="/assets/%E5%87%BD%E6%95%B0%E8%AE%A1%E7%AE%97%E6%B5%81%E7%A8%8B.png" alt="函数计算流程"></p>
+<ol>
+<li>开发者使用编程语言编写应用和服务。函数计算支持的开发语言请参见开发语言列表。</li>
+<li>开发者上传应用到函数计算。上传途径包括：<ul>
+<li>（推荐）通过函数计算控制台上传。</li>
+<li>（推荐）通过命令行工具Funcraft上传更多信息，请参见Funcraft。</li>
+<li>通过API或SDK上传。更多信息，请参见SDK列表。</li>
+<li>通过命令行工具fcli上传。更多信息，请参见通用操作。</li>
+</ul>
+</li>
+<li>通过第三方服务商提供的一些事件触发函数执行。触发方式包括OSS、API网关、日志服务、表格存储以及函数计算API、SDK等 。</li>
+</ol>
+<p>​  4.   动态扩容以响应请求，请求量激增时Serverless架构可以实现自动毫秒级扩容，该过程对您和您的用户均透明无感知。</p>
+<ol start="5">
+<li>根据函数的实际执行时间按量计费。函数执行结束后，可以通过账单来查看执行费用，收费粒度精确到1毫秒。更多信息，请参见<a href="https://help.aliyun.com/document_detail/179379.htm#concept-2542889" target="_blank" rel="noopener">实例规格及使用模式</a>。</li>
+</ol>
+<p>​       最初“无服务器”意在帮助开发者摆脱运行后端应用程序所需的服务器设备的设置和管理工作。Serverless 并不意味着没有服务器，而是指由第三方供应商负责后端基础结构的维护，以服务的方式为开发者提供所需功能，例如数据库、消息，以及身份验证等。</p>
+<h1 id="Serverless的优点"><a href="#Serverless的优点" class="headerlink" title="Serverless的优点"></a>Serverless的优点</h1><ul>
+<li>让开发者只专注于自己的核心业务，极大提升开发效率，直接推动了一种NoOps的团队模式的发展。</li>
+<li>每个Function在独立的进程中运行，且完全无状态，FaaS自动负责水平扩展。</li>
+<li>大量节省成本，减少交付周期，我们只为Function运行时间付费。</li>
+<li>安全性有更高的保证，数据安全和运行时安全以及异常响应不需用户实现，云服务可解决此类问题。</li>
+</ul>
+<h1 id="Serverless劣势-局限"><a href="#Serverless劣势-局限" class="headerlink" title="Serverless劣势/局限"></a>Serverless劣势/局限</h1><ul>
+<li>受到Event触发事，FaaS才创建出新进程来服务，这里有启动时延，不适合频繁调用的任务。</li>
+<li>Serverless架构无法用于极高并发环境，该环境下进程的创建和销毁代价太高。</li>
+<li>Function运行时间受限，且无法常驻内存。</li>
+<li>Function完全无状态，需要借助外部服务才能实现状态共享，提升架构复杂度， 多函数维护和管理是问题。</li>
+<li>极大依赖厂商的BaaS服务，且各厂商的BaaS服务接口不同，导致迁移困难。</li>
+<li>缺乏工具，集成测试困难，调试困难，监控困难。</li>
+</ul>
+<h1 id="Serverless架构原则"><a href="#Serverless架构原则" class="headerlink" title="Serverless架构原则"></a>Serverless架构原则</h1><ul>
+<li>Serverless架构是SOA概念的自然延伸，按照特性的需求编写特定的函数。</li>
+<li>编写单一用途的无状态函数，让测试更加容易，让后期灵活编排成复杂服务更加容易。</li>
+<li>最灵活、最强大的无服务器设计是事件驱动型的，在合适的情况下，构建事件驱动的、基于推送的系统常常有利于降低成本和系统复杂性。</li>
+<li>创建更强大的前端。数据签名的令牌让前端可以与不同的服务直接通信，从而让函数的执行尽可能快，可以提升性能，降低成本。</li>
+<li>尽量使用第三方BaaS服务减少核心代码的复杂度。</li>
+</ul>
+<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>由上述的优势和劣势，可见Serverless适用于“简单应用后端架构”，而不适用于“大型复杂应用后端架构”。在一个大型应用架构中，我们可以将其中无状态，事件触发的业务拆成Serverless架构，让他成为复杂应用架构的一种有效补充。</p>
+<h1 id="市场格局"><a href="#市场格局" class="headerlink" title="市场格局"></a>市场格局</h1><ul>
+<li><a href="https://aws.amazon.com/cn/lambda/" target="_blank" rel="noopener">AWS的Lambda服务</a></li>
+<li><a href="https://cloud.google.com/functions/" target="_blank" rel="noopener">Google Cloud Functions</a></li>
+<li><a href="https://www.iron.io/" target="_blank" rel="noopener">Iron.io</a></li>
+<li><a href="https://www.ibm.com/cloud-computing/bluemix/zh/openwhisk" target="_blank" rel="noopener">IBM的OpenWhisk</a></li>
+<li><a href="https://github.com/serverless/serverless" target="_blank" rel="noopener">Serverless Framework</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/app-service/web-sites-create-web-jobs" target="_blank" rel="noopener">Azure WebJobs</a></li>
+</ul>
+<p>其他项目</p>
+<ul>
+<li><a href="https://github.com/anaibol/awesome-serverless" target="_blank" rel="noopener">GitHub - anaibol/awesome-serverless: A curated list of awesome services, solutions and resources for serverless / nobackend applications.</a></li>
+<li><a href="https://github.com/fission/fission" target="_blank" rel="noopener">Fission</a>: 运行在Kubernetes上的Serverless架构</li>
+<li><a href="https://github.com/open-lambda/open-lambda" target="_blank" rel="noopener">OpenLambda</a></li>
+</ul>
+<h2 id="Serverless发展"><a href="#Serverless发展" class="headerlink" title="Serverless发展"></a>Serverless发展</h2><p>​          从现状来看，2014年AWS推出lambda到现今，已过去6年，Serverless相关技术与工具发展迅速，尽管Serverless目前仍存在一些缺点还没有得到较好的解决，但考虑到Serverless的巨大优点，越来越多的用户考虑使用Serverless服务。</p>
+<p>​    2019 年 12 月咨询公司 O’Reill发布 Serverless 使用调研中，已有 40% 的受访者所在的组织采用了 Serverless。2020 年 10 月，中国信息通信研究院发布的《中国云原生用户调研报告》指出：“Serverless 技术显著升温，近 30%的用户已在生产环境中应用。”</p>
+<p>​    2019 年下半年，阿里云函数计算宣布推出 2.0，支持预留模式，全面解决冷启动延迟大的问题；推出单实例多请求问题，较少实例支持重 IO 高并发类型请求调用；支持自定义运行时，支持一键迁移传统 Web 架构服务器。2.0 的出现让函数计算在业务和规模上实现了巨大升级。</p>
+<p>​    在经历了过去的线下场景考验后，世纪联华将各渠道商的业务及旗下的“联华鲸选 APP”，以及线上交易、定时抢优惠券、秒杀业务也全部从 ECS 迁移到了函数计算 2.0，在开启预留模式调整好单实例多并发的模式后，面对平时数十倍的流量请求也能轻松应对。</p>
+<p>​    <img src="/assets/%E4%B8%96%E7%BA%AA%E8%81%94%E5%8D%8E%E7%A7%92%E6%9D%80%E6%B4%BB%E5%8A%A8.png" alt="世纪联华"></p>
+<p>​       比较上述的“时间-流量图”及“时间-延迟”两图可以看到，急剧上升的突发流量对用户造成的延迟变化影响非常小，从用户的反馈来说，基本感受不到较为明显的延迟，使用Serverless，减轻的不只是研发人员的心理压力，还有工作量。</p>
+<p>​        相信随着越来越多的使用Serverless服务成功案例的诞生，更多的开发者与用户将会关Serverless, Serverless相关技术发展以及使用率都将迎来巨大的提升。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://www.instapaper.com/read/973303695" target="_blank" rel="noopener">Serverless架构综述 - DockOne.io</a></li>
+<li><a href="https://www.instapaper.com/read/973303607" target="_blank" rel="noopener">Serverless，后端小程序的未来</a></li>
+<li><a href="https://www.instapaper.com/read/973305579" target="_blank" rel="noopener">2017年会是Serverless爆发之年吗？</a></li>
+<li><a href="https://12factor.net/zh_cn/" target="_blank" rel="noopener">The Twelve-Factor App （简体中文）</a></li>
+<li><a href="https://www.infoworld.com/article/3193119/open-source-tools/get-functional-5-open-source-frameworks-for-serverless-computing.html" target="_blank" rel="noopener">Get functional 5 open source frameworks for serverless computing</a></li>
+<li><a href="https://help.aliyun.com/document_detail/52895.html" target="_blank" rel="noopener">https://help.aliyun.com/document_detail/52895.html</a></li>
+</ul>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2021/03/25/Python精度问题处理/" style="float: left;">
+        ← Python精度问题处理
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/12/17/软件架构模式总结/">
+        软件架构模式总结 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("<a href="https://changyan.sohu.com/upload/changyan.js" class="linker linker-url" target="_blank" rel="noopener noreferrer">https://changyan.sohu.com/upload/changyan.js</a>", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Steven Xue. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/StevenXue" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('<a href="https://instagram.com/explore/tags/intro" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#intro</a>').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
