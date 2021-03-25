@@ -198,9 +198,7 @@
 <li>FaaS：Function as a Service，如AWS Lambda。</li>
 </ul>
 <p>FaaS中的Function就是我们需要100%专注的核心业务。Function又是由事件Event驱动的，再结合上公有云提供的BaaS的服务，我们就能实现出一套完整的业务架构。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">​</span><br></pre></td></tr></table></figure>
-
-<pre><code>+--------+        +--------+        +--------+</code></pre><p>  Request  |        | Event  |        |        |        |<br>———-&gt;|  BaaS  |——-&gt;|Function|——-&gt;|  BaaS  |<br>           |        |        |        |        |        |<br>           +——–+        +——–+        +——–+<br>​<code></code></p>
+<p><img src="/assets/1616678072228.png" alt="1616678072228"></p>
 <p><strong>FaaS(函数即服务)</strong> 的核心是</p>
 <ul>
 <li>核心业务代码Function，FaaS包含了运行核心代码的一切必要条件。</li>
@@ -289,6 +287,8 @@
 <li><a href="https://www.infoworld.com/article/3193119/open-source-tools/get-functional-5-open-source-frameworks-for-serverless-computing.html" target="_blank" rel="noopener">Get functional 5 open source frameworks for serverless computing</a></li>
 <li><a href="https://help.aliyun.com/document_detail/52895.html" target="_blank" rel="noopener">https://help.aliyun.com/document_detail/52895.html</a></li>
 </ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">           +--------+            +--------+        +--------+</span><br><span class="line">  Request  |        |   Event    |        |        |        |</span><br><span class="line">----------&gt;|  BaaS  |-----------&gt;|Function|-------&gt;|  BaaS  |</span><br><span class="line">           |        |            |        |        |        |</span><br><span class="line">           +--------+            +--------+        +--------+</span><br></pre></td></tr></table></figure>
+
 
             <div class="clearfix"></div>
             <hr class="nogutter">
