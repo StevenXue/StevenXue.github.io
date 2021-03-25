@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Python内存泄露调查 | 石头记</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="石头记">
+    <meta name="author" content="Steven Xue">
+    <meta name="description" content="" />
+    <meta name="keywords" content="技术" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="石头记" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">石头记</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/StevenXue" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-03-25T13:21:32.000Z" itemprop="datePublished">
+          2021-03-25
+      </time>
+    
+    
+    | 
+    <a href='/tags/Python，Code/'>Python，Code</a>
+    
+    
+</span>
+                <h1>Python内存泄露调查</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="第一步：本地复现问题"><a href="#第一步：本地复现问题" class="headerlink" title="第一步：本地复现问题"></a>第一步：本地复现问题</h1><p>本地测试一发，确实能稳定复现…</p>
+<p>无法判断框架还是自己写的Code 的问题。</p>
+<h1 id="第二步：搜索：python-怎样排查内存泄漏"><a href="#第二步：搜索：python-怎样排查内存泄漏" class="headerlink" title="第二步：搜索：python 怎样排查内存泄漏"></a>第二步：搜索：python 怎样排查内存泄漏</h1><p>开始搜索一些，比如这个 <a href="http://jackywu.github.io/articles/python%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E8%B0%83%E8%AF%95%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/" target="_blank" rel="noopener">Python 内存泄漏调试指导思想</a> 看来看去，这些文章大致分为两类，一部分是介绍 Python 垃圾回收机制；另一部分是介绍公众调试工具的使用。 有的文章里面还总结了常见的出现内存泄露的情景：</p>
+<ol>
+<li>C 语言编写的模块出现内存泄漏</li>
+<li>全局对象比如 list/dict 不断增大</li>
+<li>代码内有引用循环，python 垃圾回收机制没办法回收</li>
+</ol>
+<p>前两种情况，没什么好说的，对于第三种情况，这里补充一个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a=[]</span><br><span class="line">b=[]</span><br><span class="line">a.append(b)</span><br><span class="line">b.append(a)</span><br><span class="line"><span class="keyword">del</span> a</span><br><span class="line"><span class="keyword">del</span> b</span><br><span class="line"><span class="keyword">print</span> gc.collect()</span><br></pre></td></tr></table></figure>
+
+<p>​       Python中的对象主要分为类型对象和实例对象, 除了内置的类型对象外，都存在于堆上，内置的类型对象则静态分配内存. 为int分配的内存是永远也不会被python释放的，所有的int对象使用的内存大小和同时存在的int数量的最大值有关.str对象也存在同样的问题。 </p>
+<p>参考：</p>
+<ul>
+<li><a href="http://studygolang.com/topics/1147" target="_blank" rel="noopener">Python内置对象实现的方法及注意事项</a></li>
+<li><a href="http://itindex.net/detail/24977-python-%E5%86%85%E5%AD%98-%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">Python 内存不释放原理</a></li>
+</ul>
+<h2 id="Python-垃圾回收三种方式"><a href="#Python-垃圾回收三种方式" class="headerlink" title="Python 垃圾回收三种方式"></a>Python 垃圾回收三种方式</h2><ul>
+<li><p>引用计数(主)；</p>
+</li>
+<li><p>标记-清除（<strong>效率不高</strong>）；</p>
+</li>
+<li><p>分代收集。</p>
+<p>以下情况时，对象的引用计数增加：</p>
+</li>
+</ul>
+<ol>
+<li>对象被创建；</li>
+<li>另外的别名被创建；</li>
+<li>作为参数传递给函数；</li>
+<li>成为容器对象的一个元素；</li>
+</ol>
+<p>以下情况时，对象的引用计数减少：</p>
+<ol>
+<li>一个本地引用离开其作用范围，比如函数结束时，所有局部非循环引用变量都被自动销毁；</li>
+<li>用del语句显式删除一个变量（同时该变量从name space中删除）；</li>
+<li>对象的一个别名被赋值给其他对象；</li>
+<li>对象被移出一个容器对象时；</li>
+<li>容器对象本身的引用计数变成0；</li>
+</ol>
+<p>​        有 <strong>del</strong>() 函数的对象间的循环引用是导致内存泄漏的主凶。 另外需要说明：对没有 <strong>del</strong>() 函数的 Python 对象间的循环引用，是可以被自动垃圾回收掉的。       </p>
+<p>​       对于大的数组解决的方式，基本只有用yield来将列表对象转换为生成器对象。列表对象会同时生成所有元素，从而直接分配所有内存。而生成器则是一次生成一个元素，比较节约内存。 </p>
+<h2 id="各种调试工具试用分析"><a href="#各种调试工具试用分析" class="headerlink" title="各种调试工具试用分析"></a>各种调试工具试用分析</h2><ul>
+<li>Python 标准库 <code>gc</code>  内置模块, 函数少功能基本, 使用简单, 作为python开发者里边的内容必须过一遍</li>
+<li>objgraph： 可以绘制对象引用图, 对于对象种类较少, 结构比较简单的程序适用</li>
+<li>pympler: 可以统计内存里边各种类型的使用, 获取对象的大小</li>
+<li>guppy: 可以对堆里边的对象进行统计, 算是比较实用</li>
+</ul>
+<p>个人最终使用感受：</p>
+<ul>
+<li>使用 pympler <a href="https://pythonhosted.org/Pympler/muppy.html#muppy" target="_blank" rel="noopener">定位大致问题</a></li>
+<li>使用 objgraph <a href="https://mg.pov.lt/objgraph/" target="_blank" rel="noopener">定位一些细节问题</a></li>
+</ul>
+<p>​     上边这些虽然有用但是总是搞不到点子上, 而且都需要改我的源程序, 比较费劲, 线上的代码不是说改就能改的, 而且他们功能也都比较弱, 后来发现两个强大的工具:</p>
+<ul>
+<li><strong>tracemalloc</strong>: 究极强, 可以直接看到哪个(哪些)对象占用了最大的空间, 这些对象是谁, 调用栈是啥样的, python3直接内置, python2如果安装的话需要编译</li>
+<li><strong>pyrasite</strong>: 牛逼的第三方库, 可以渗透进入正在运行的python进程动态修改里边的数据和代码(其实修改代码就是通过修改数据实现)</li>
+</ul>
+<p>​     开始的时候非常想用tracemalloc, 可是对python2特别不友好, 需要重新编译python, 而且只能用python2.7.8编译, 编译好了也不容易嵌入到虚拟环境中, 头大, 果断换第二个.</p>
+<blockquote>
+<p><strong>注</strong>: pyrasite使用之前需要在root用户下运行命令 echo 0 &gt; /proc/sys/kernel/yama/ptrace_scope后才能正常使用</p>
+</blockquote>
+<p>pyrasite里边有一个工具叫pyrasite-memory-viewer, 功能和guppy差不多, 不过可以对内存使用统计和对象之间的引用关系进行快照保存, 很易用也很强大。</p>
+<h1 id="第三步：各种照搬和尝试，找到原因"><a href="#第三步：各种照搬和尝试，找到原因" class="headerlink" title="第三步：各种照搬和尝试，找到原因"></a>第三步：各种照搬和尝试，找到原因</h1><p>使用各种工具和方法查内存使用情况和代码运行状态，直到查出问题所在。</p>
+<p><strong>查看 进程的线程数量</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -o nlwp &lt;pid&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>根据对象的id/address动态获取对象</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ctypes</span><br><span class="line">obj = ctypes.cast(&lt;addr_or_id&gt;, ctypes.py_object).value</span><br></pre></td></tr></table></figure>
+
+<p>*<em>查看垃圾回收的日志 *</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gc.set_debug(...)</span><br></pre></td></tr></table></figure>
+
+<h1 id><a href="#" class="headerlink" title=" "></a> </h1><h1 id="第四步：思考总结，回顾过程"><a href="#第四步：思考总结，回顾过程" class="headerlink" title="第四步：思考总结，回顾过程"></a>第四步：思考总结，回顾过程</h1>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2021/03/25/Python精度问题处理/">
+        Python精度问题处理 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("<a href="https://changyan.sohu.com/upload/changyan.js" class="linker linker-url" target="_blank" rel="noopener noreferrer">https://changyan.sohu.com/upload/changyan.js</a>", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Steven Xue. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/StevenXue" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('<a href="https://instagram.com/explore/tags/intro" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#intro</a>').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
