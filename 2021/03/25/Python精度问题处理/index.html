@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Python精度问题处理 | 石头记</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="石头记">
+    <meta name="author" content="Steven Xue">
+    <meta name="description" content="" />
+    <meta name="keywords" content="技术" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="石头记" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">石头记</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/StevenXue" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-03-25T03:55:23.000Z" itemprop="datePublished">
+          2021-03-25
+      </time>
+    
+    
+    | 
+    <a href='/tags/Python-Code/'>Python, Code</a>
+    
+    
+</span>
+                <h1>Python精度问题处理</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="Python精度问题处理"><a href="#Python精度问题处理" class="headerlink" title="Python精度问题处理"></a>Python精度问题处理</h2><p>Python中浮点类型之间的运算，其结果并不像我们想象的那样，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span>&gt;&gt; 0.1+0.2</span><br><span class="line">0.30000000000000004</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; 0.1+0.1-0.2</span><br><span class="line">0.0</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; 0.1+0.1+0.1-0.3</span><br><span class="line">5.551115123125783e-17</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; 0.1+0.1+0.1-0.2</span><br><span class="line">0.10000000000000003</span><br></pre></td></tr></table></figure>
+
+<p>为什么在计算这么简单的问题上，计算机会出现这样的低级错误呢？真正的原因在于十进制和数和二进制数的转换。 以类似 0.1 这样的浮点数为例，如果手动将其转换成二进制，其结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.1</span>(<span class="number">10</span>)=<span class="number">0.00011001100110011</span>...(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，结果是无限循环的，也就是说，0.1 转换成二进制数后，无法精确到等于十进制数的 0.1。同时，由于计算机存储的位数是有限制的，所以如果要存储的二进制位数超过了计算机存储位数的最大值，其后续位数会被舍弃（舍弃的原则是“0 舍 1 入”）。</p>
+<blockquote>
+<p>这种问题不仅在 Python 中存在，在所有支持浮点数运算的编程语言中都会遇到，它不光是 Python 的 Bug。</p>
+</blockquote>
+<p>​       </p>
+<h3 id="浮点型数据计算"><a href="#浮点型数据计算" class="headerlink" title="浮点型数据计算"></a>浮点型数据计算</h3><p>​        当我们利用python进行数据计算时，通常会对浮点数保留相应的位数，这时候就会用到round函数，相信各位朋友在进行使用时会遇到各种问题，关于round函数保留精度、保留方法的问题，本文会进行详细的解释和说明。首先，先将结论告诉大家：round函数采用的是<strong>四舍六入五成双</strong>的计数保留方法，不是四舍五入！ </p>
+<p><strong>1</strong>、什么是四舍六入五成双？ </p>
+<p>​       四舍六入五成双是一种比较科学的计数保留方法。具体的保留方法为：</p>
+<ul>
+<li>1) 小于等于4的舍去；</li>
+<li>2)  大于等于6的进一；</li>
+<li>3)  5的话要看后面有没有有效数字，有的话进一，没有的话要按照5前面数字的奇偶来处理，若5前面为奇数，则进一，若5前面为偶数，舍5不进。 </li>
+</ul>
+<p>为了便于理解举个例子吧：比如是1.15—&gt;1.2,   1.25—&gt;1.2，  1.250—&gt;1.2, 1.25012—&gt;1.3 </p>
+<p><strong>2</strong>、python中<strong>round</strong>函数使用 </p>
+<p>开始在python中使用round函数时，你会发现:round(1.15,1)–&gt;1.1，看到这个结果时千万别慌，这个是正常的。这是因为python中对于小数的处理方法造成的，为了保证输入数字的精确性，python内部真正输入的数字是由两个数值相除得出来的，如0.33和0.333等都无法准确表示1/3，写成分数的形式对于输入的数字来说更加精确。 </p>
+<p><strong>3</strong>、为什么python中使用round(1.15)会是1.1呢？ </p>
+<p>当我们输入1.15时，python内部其实输入的是 </p>
+<p>当我们对这个数字保留小数位时，根据四舍原则，当然是1.1了 </p>
+<p>同理，1.55要进一，1.25内部会舍去，看到这里你应该明白了吧！ </p>
+<p><strong>4</strong>、就是要四舍五入怎么办？ </p>
+<p>如果说非要进行四舍五入，就要用到decimal模块，进行下面处理以后就可以得到 ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> decimal</span><br><span class="line">a = decimal.Decimal(<span class="string">"10.0"</span>)</span><br><span class="line">b = decimal.Decimal(<span class="string">"3"</span>)</span><br><span class="line">print(<span class="number">10.0</span>/<span class="number">3</span>)</span><br><span class="line">print(a/b)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.3333333333333335</span></span><br><span class="line"><span class="number">3.333333333333333333333333333</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 decimal 模块还是无法满足需求，还可以使用 fractions 模块，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fractions <span class="keyword">import</span> Fraction</span><br><span class="line">print(<span class="number">10</span>/<span class="number">3</span>)</span><br><span class="line">print(Fraction(<span class="number">10</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.3333333333333335</span></span><br><span class="line"><span class="number">10</span>/<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，通过 fractions 模块能很好地解决浮点类型数之间运算的问题。</p>
+<h3 id="自定义round方法"><a href="#自定义round方法" class="headerlink" title="自定义round方法"></a>自定义<strong>round</strong>方法</h3><p>为保证参数的一致性，copy一份原始的方法，将参数保留并换个名字，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">round</span><span class="params">(number, ndigits=None)</span>:</span> <span class="comment"># real signature unknown; restored from __doc__</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    原始方法</span></span><br><span class="line"><span class="string">    round(number[, ndigits]) -&gt; floating point number</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Round a number to a given precision in decimal digits (default 0 digits).</span></span><br><span class="line"><span class="string">    This always returns a floating point number.  Precision may be negative.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.0</span></span><br></pre></td></tr></table></figure>
+
+<p>只考虑浮点型和普通整型数值的情况下，只要精度为正数基本上都可以处理：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math  <span class="comment"># 引入数学包，处理幂次</span></span><br><span class="line"><span class="keyword">from</span> decimal <span class="keyword">import</span> Decimal, ROUND_HALF_UP</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_round1</span><span class="params">(number, percision=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    自定义浮点型处理</span></span><br><span class="line"><span class="string">    Round a number to a given precision in decimal digits (default 0 digits).</span></span><br><span class="line"><span class="string">    This always returns a floating point number. </span></span><br><span class="line"><span class="string">    :param number: 数值</span></span><br><span class="line"><span class="string">    :param percision: 浮点型的精度位数</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> percision:</span><br><span class="line">        percision = <span class="number">0</span></span><br><span class="line">    percision = str(math.pow(<span class="number">0.1</span>, percision))</span><br><span class="line">    <span class="keyword">return</span> Decimal(number).quantize(Decimal(percision), rounding=ROUND_HALF_UP)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    print(round(<span class="number">3.14</span>, <span class="number">2</span>), my_round(<span class="number">3.14</span>, <span class="number">2</span>))</span><br><span class="line">    print(round(<span class="number">6.25</span>, <span class="number">3</span>), my_round(<span class="number">6.25</span>, <span class="number">3</span>))</span><br><span class="line">    print(round(<span class="number">1.15</span>, <span class="number">1</span>), my_round(<span class="number">1.15</span>, <span class="number">1</span>))  <span class="comment"># 特殊值</span></span><br><span class="line">    print(round(<span class="number">1.25</span>, <span class="number">1</span>), my_round(<span class="number">1.25</span>, <span class="number">1</span>))</span><br><span class="line">    print(round(<span class="number">1.250</span>, <span class="number">2</span>), my_round(<span class="number">1.25</span>, <span class="number">2</span>))</span><br><span class="line">    print(round(<span class="number">1.25012</span>, <span class="number">1</span>), my_round(<span class="number">1.25012</span>, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">-1</span>), my_round(<span class="number">6.25</span>, <span class="number">-1</span>)  <span class="comment"># 异常值</span></span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">-2</span>), my_round(<span class="number">6.25</span>, <span class="number">-2</span>)  <span class="comment"># 异常值</span></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">3.14</span>, Decimal(<span class="string">'3.14'</span>))</span><br><span class="line">(<span class="number">6.25</span>, Decimal(<span class="string">'6.250'</span>))</span><br><span class="line">(<span class="number">1.1</span>, Decimal(<span class="string">'1.1'</span>))</span><br><span class="line">(<span class="number">1.3</span>, Decimal(<span class="string">'1.3'</span>))</span><br><span class="line">(<span class="number">1.25</span>, Decimal(<span class="string">'1.25'</span>))</span><br><span class="line">(<span class="number">1.3</span>, Decimal(<span class="string">'1.3'</span>))</span><br><span class="line">(<span class="number">10</span>, Decimal(<span class="string">'6.3'</span>))</span><br><span class="line">(<span class="number">0.0</span>, Decimal(<span class="string">'6.3'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>但是对于精度传值为负数的情况，处理会出问题， 比如 <code>round(6,25,-1)</code>实际值为10，但是<code>my_round(6.25, -1)</code> 为6.3， 因此需要特别处理，就以纯数学的方式补充：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_round2</span><span class="params">(number, percision=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    自定义浮点型处理</span></span><br><span class="line"><span class="string">    Round a number to a given precision in decimal digits (default 0 digits).</span></span><br><span class="line"><span class="string">    This always returns a floating point number. Precision may be negative.</span></span><br><span class="line"><span class="string">    :param number: 数值</span></span><br><span class="line"><span class="string">    :param percision: 浮点型的精度位数</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> percision:</span><br><span class="line">        percision = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> percision &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 整数或者负精度的数字的处理方式</span></span><br><span class="line">        <span class="keyword">return</span> int(number * <span class="number">10</span> ** percision + <span class="number">0.5</span>) / <span class="number">10</span> ** percision</span><br><span class="line">    percision = str(math.pow(<span class="number">0.1</span>, percision))</span><br><span class="line">    <span class="keyword">return</span> Decimal(number).quantize(Decimal(percision), rounding=ROUND_HALF_UP)</span><br></pre></td></tr></table></figure>
+
+<p>测试代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">3.14</span>, <span class="number">2</span>), my_round(<span class="number">3.14</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">-1</span>), my_round(<span class="number">6.25</span>, <span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">-2</span>), my_round(<span class="number">6.25</span>, <span class="number">-2</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">3</span>), my_round(<span class="number">6.25</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.15</span>, <span class="number">1</span>), my_round(<span class="number">1.15</span>, <span class="number">1</span>)  <span class="comment"># 特殊值</span></span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.25</span>, <span class="number">1</span>), my_round(<span class="number">1.25</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.250</span>, <span class="number">2</span>), my_round(<span class="number">1.25</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.25012</span>, <span class="number">1</span>), my_round(<span class="number">1.25012</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">-1.25012</span>, <span class="number">0</span>), my_round(<span class="number">-1.25012</span>, <span class="number">0</span>)  <span class="comment"># 异常值</span></span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14</span> <span class="number">3.14</span></span><br><span class="line"><span class="number">10.0</span> <span class="number">10.0</span></span><br><span class="line"><span class="number">0.0</span> <span class="number">0.0</span></span><br><span class="line"><span class="number">6.25</span> <span class="number">6.250</span></span><br><span class="line"><span class="number">1.1</span> <span class="number">1.1</span></span><br><span class="line"><span class="number">1.3</span> <span class="number">1.3</span></span><br><span class="line"><span class="number">1.25</span> <span class="number">1.25</span></span><br><span class="line"><span class="number">1.3</span> <span class="number">1.3</span></span><br><span class="line"><span class="number">-1.0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>发现对于负数的计算，存在不同的进位方式， 与正数处理略有不同， 因此考虑先提取符号：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_round3</span><span class="params">(number, percision=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    自定义浮点型处理</span></span><br><span class="line"><span class="string">    Round a number to a given precision in decimal digits (default 0 digits).</span></span><br><span class="line"><span class="string">    This always returns a floating point number.Precision may be negative.</span></span><br><span class="line"><span class="string">    :param number: 输入数值</span></span><br><span class="line"><span class="string">    :param percision: 浮点型的精度位数</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    negative = <span class="number">1</span>  <span class="comment"># 默认是正数</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> percision:</span><br><span class="line">        percision = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">0</span>:</span><br><span class="line">        negative = <span class="number">-1</span></span><br><span class="line">        number = number / <span class="number">-1</span></span><br><span class="line">    <span class="keyword">if</span> percision &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 整数或者负精度的数字的处理方式</span></span><br><span class="line">        <span class="keyword">return</span> int(number * <span class="number">10</span> ** percision + <span class="number">0.5</span>) / <span class="number">10</span> ** percision * negative</span><br><span class="line">    percision = str(math.pow(<span class="number">0.1</span>, percision))</span><br><span class="line">    <span class="keyword">return</span> Decimal(number).quantize(Decimal(percision), rounding=ROUND_HALF_UP) * negative</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">3.14</span>, <span class="number">2</span>), my_round(<span class="number">3.14</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">-1</span>), my_round(<span class="number">6.25</span>, <span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">-2</span>), my_round(<span class="number">6.25</span>, <span class="number">-2</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">6.25</span>, <span class="number">3</span>), my_round(<span class="number">6.25</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.15</span>, <span class="number">1</span>), my_round(<span class="number">1.15</span>, <span class="number">1</span>)  <span class="comment"># 特殊值</span></span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.25</span>, <span class="number">1</span>), my_round(<span class="number">1.25</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.250</span>, <span class="number">2</span>), my_round(<span class="number">1.25</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">1.25012</span>, <span class="number">1</span>), my_round(<span class="number">1.25012</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">-1.25012</span>, <span class="number">0</span>), my_round(<span class="number">-1.25012</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">-6.251</span>, <span class="number">1</span>), my_round(<span class="number">-6.251</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">-6.151</span>, <span class="number">1</span>), my_round(<span class="number">-6.151</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">-1.25012</span>, <span class="number">2</span>), my_round(<span class="number">-1.25012</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">print</span> round(<span class="number">-100.1</span>, <span class="number">2</span>), my_round(<span class="number">-100.1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下， 某些例子上新的方法反而更准确：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14</span> <span class="number">3.14</span></span><br><span class="line"><span class="number">10.0</span> <span class="number">10.0</span></span><br><span class="line"><span class="number">0.0</span> <span class="number">0.0</span></span><br><span class="line"><span class="number">6.25</span> <span class="number">6.250</span></span><br><span class="line"><span class="number">1.1</span> <span class="number">1.1</span></span><br><span class="line"><span class="number">1.3</span> <span class="number">1.3</span></span><br><span class="line"><span class="number">1.25</span> <span class="number">1.25</span></span><br><span class="line"><span class="number">1.3</span> <span class="number">1.3</span></span><br><span class="line"><span class="number">-1.0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">-6.3</span> <span class="number">-6.3</span></span><br><span class="line"><span class="number">-6.2</span> <span class="number">-6.2</span></span><br><span class="line"><span class="number">-1.25</span> <span class="number">-1.25</span></span><br><span class="line"><span class="number">-100.1</span> <span class="number">-100.10</span></span><br></pre></td></tr></table></figure>
+
+<p>加入批量的单元测试例子, 示例如下，输入值随机、整数部分随机位数，符号随机分别验证：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_my_round</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">        <span class="comment"># 随机100个数来验证此方法与原来的round方法的计算一致性</span></span><br><span class="line">        a = random.random()  <span class="comment"># 随机一个0-1以内的浮点数</span></span><br><span class="line">        bit = random.choice([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>])</span><br><span class="line">        negative = random.choice([<span class="number">-1</span>, <span class="number">1</span>])</span><br><span class="line">        number = a * <span class="number">10</span> ** bit   <span class="comment"># 扩充实际位数以及量级</span></span><br><span class="line">        percision = negative * bit  </span><br><span class="line">        print(number, percision, round(number, percision), my_round(number, percision))</span><br><span class="line">        <span class="keyword">if</span> round(number, percision) != my_round(number, percision):</span><br><span class="line">            <span class="keyword">assert</span> <span class="string">"&<a href="https://instagram.com/explore/tags/123" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;&<a href="https://instagram.com/explore/tags/125" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#125</a>; != &<a href="https://instagram.com/explore/tags/123" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#123</a>;&<a href="https://instagram.com/explore/tags/125" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#125</a>;"</span>.format(round(number, percision),</span><br><span class="line">                                     my_round(number, percision))</span><br></pre></td></tr></table></figure>
+
+<p>经确认无误， 所以形成最后的方法，在实际使用时直接替换掉<strong>round</strong>的调用与使用即可。</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>因为浮点格式采用“科学计数法” 的关系，用浮点数表示一些极大和极小的数值比较方便，但是在处理浮点数的时候经常会发生精度损失的问题。 为此在实际使用过程中，自定义浮点型的数据处理会更有效， 虽然麻烦些，但是不会导致数据显示异常等情况。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_round</span><span class="params">(number, percision=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    自定义浮点型处理</span></span><br><span class="line"><span class="string">    Round a number to a given precision in decimal digits (default 0 digits).</span></span><br><span class="line"><span class="string">    This always returns a floating point number.  Precision may be negative.</span></span><br><span class="line"><span class="string">    :param number: 输入数值</span></span><br><span class="line"><span class="string">    :param percision: 浮点型的精度位数</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sign = <span class="number">1</span>  <span class="comment"># 正负号处理， 默认是正号</span></span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">0</span>:</span><br><span class="line">        sign = <span class="number">-1</span>  <span class="comment"># 符号变更</span></span><br><span class="line">        number = number / <span class="number">-1</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> percision:</span><br><span class="line">        percision = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> percision &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 整数或者负精度的数字的处理方式</span></span><br><span class="line">        <span class="keyword">return</span> sign * int(number * <span class="number">10</span> ** percision + <span class="number">0.5</span>) / <span class="number">10</span> ** percision</span><br><span class="line">    percision = str(math.pow(<span class="number">0.1</span>, percision))</span><br><span class="line">    <span class="keyword">return</span> Decimal(number).quantize(Decimal(percision), rounding=ROUND_HALF_UP) * sign</span><br></pre></td></tr></table></figure>
+
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2020/12/17/软件架构模式总结/">
+        软件架构模式总结 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("<a href="https://changyan.sohu.com/upload/changyan.js" class="linker linker-url" target="_blank" rel="noopener noreferrer">https://changyan.sohu.com/upload/changyan.js</a>", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Steven Xue. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/StevenXue" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('<a href="https://instagram.com/explore/tags/intro" class="linker linker-hashtag" target="_blank" rel="noopener noreferrer">#intro</a>').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
