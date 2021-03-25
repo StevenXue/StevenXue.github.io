@@ -195,7 +195,7 @@
 <p>大体上，主要有下面这7种架构模式：</p>
 <h4 id="1-分层架构"><a href="#1-分层架构" class="headerlink" title="1.分层架构"></a>1.分层架构</h4><p>最常见的架构模式就是分层架构或者称为 n 层架构。</p>
 <p>大部分软件架构师、设计师和开发者都对这个架构模式非常熟悉。尽管对于层的数量和类型没有具体限制，但大部分分层架构主要由四层组成：展现层、业务层、持久层和数据库层，如下图所示：</p>
-<p><img src="assets/640.png" alt="图片">一个很流行的 n 层架构示例</p>
+<p><img src="/assets/640.png" alt="图片">一个很流行的 n 层架构示例</p>
 <p> <strong>1</strong> <strong>上下文</strong> </p>
 <p>所有复杂的系统都会经历独立地发展和衍化系统各个部分的需要。出于这个原因，系统开发者需要对关注点进行清晰且条理分明的分离，以便系统的各个模块可以独立地开发和维护。</p>
 <p> <strong>2</strong> <strong>问题</strong> </p>
@@ -207,14 +207,14 @@
 <li>第二个概念是，分层架构模式是一个技术性的分区架构，而非一个领域性的分区架构。它们是由组件组成的，而不是领域。</li>
 <li>最后一个概念是，分层架构中的每一层都被标记为封闭或者开放。封闭层意味着请求从一层移到另一层，它必须通过它正下面的这一层才能达到下面这一层的再下一层。请求不能跳过任何层。</li>
 </ul>
-<p><img src="assets/640-1608178890932.png" alt="图片">封闭层和请求访问</p>
+<p><img src="/assets/640-1608178890932.png" alt="图片">封闭层和请求访问</p>
 <p> <strong>4</strong> <strong>弱点</strong> </p>
 <p>分层会导致性能下降。这种模式不适合高性能应用程序，因为经过架构中的多层来实现一个业务请求的效率是不高的。</p>
 <p>分层还会增加系统的前期成本和复杂性。</p>
 <p> <strong>5</strong> <strong>用途</strong> </p>
 <p>我们应该将这种方式应用于小型简单的应用程序或网站。对于预算和时间非常紧张的场景，这是一个不错的选择。</p>
 <h4 id="2-多层架构"><a href="#2-多层架构" class="headerlink" title="2. 多层架构"></a>2. 多层架构</h4><p> <strong>1 方案</strong> </p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/FE4VibF0SjfPk8e5DSZ2WDTpvlBjCulZqVpMUn6SOd0nmyf6PWMuJYNIzCvmdvPqqkqOXlJgnul0kibOBiaTjLJaw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">一个多层模式示例：消费者网站 J2EE</p>
+<p><img src="assets/640.webp" alt="图片">一个多层模式示例：消费者网站 J2EE</p>
 <p>许多系统的执行结构被组织成一系列逻辑组件分组。每个分组被称为一个层。</p>
 <p> <strong>1 上下文</strong> </p>
 <p>在一个分布式部署中，通常需要将系统的基础设施分到不同的子集中。</p>
@@ -225,7 +225,7 @@
 <p> <strong>4</strong> <strong>用途</strong> </p>
 <p>用在分布式系统中。</p>
 <h4 id="3-管道-过滤器架构"><a href="#3-管道-过滤器架构" class="headerlink" title="3.管道 - 过滤器架构"></a>3.管道 - 过滤器架构</h4><p>软件架构中反复出现的一种模式是管道 - 过滤器（pipe-filter）模式。</p>
-<p><img src="assets/640-1608178936489.png" alt="图片">管道过滤器模式</p>
+<p><img src="/assets/640-1608178936489.png" alt="图片">管道过滤器模式</p>
 <p> <strong>1</strong> <strong>上下文</strong> </p>
 <p>许多系统需要转换从输入到输出的离散数据流。许多类型转换在实践中重复出现，因此将其创建成独立的可复用的部分，这是比较理想的。</p>
 <p> <strong>2</strong> <strong>问题</strong> </p>
@@ -249,7 +249,7 @@
 <p> <strong>5</strong> <strong>用途</strong> </p>
 <p>管道 - 过滤器架构用于各种应用程序，特别是简化单项处理的任务，例如 EDI、ETL 工具。</p>
 <p>编译器：连续的过滤器执行词法分析、语法分析、语义分析和代码生成。</p>
-<h4 id="4-客户端-服务器架构"><a href="#4-客户端-服务器架构" class="headerlink" title="4.客户端 - 服务器架构"></a>4.客户端 - 服务器架构</h4><p><img src="assets/640-1608179345968.png" alt="图片"></p>
+<h4 id="4-客户端-服务器架构"><a href="#4-客户端-服务器架构" class="headerlink" title="4.客户端 - 服务器架构"></a>4.客户端 - 服务器架构</h4><p><img src="/assets/640-1608179345968.png" alt="图片"></p>
 <p> <strong>1</strong> <strong>上下文</strong> </p>
 <p>有许多共享资源和服务是大量分布式的客户端希望访问的，我们希望控制访问或服务质量。</p>
 <p> <strong>2</strong> <strong>问题</strong> </p>
@@ -263,7 +263,7 @@
 <p>在系统建成后，关于功能位置（在客户端还是在服务器）的决策通常是复杂的而且变动成本很大。</p>
 <p> <strong>5</strong> <strong>用途</strong> </p>
 <p>对于有许多组件（客户端）发送请求到另外一些提供服务的组件（服务器）的系统，我们可以使用客户端 - 服务器模式来建模这个系统的一部分：在线应用程序，例如电子邮件、共享文档或银行服务。</p>
-<h4 id="5-模型-视图-控制器架构"><a href="#5-模型-视图-控制器架构" class="headerlink" title="5.模型 - 视图 - 控制器架构"></a>5.模型 - 视图 - 控制器架构</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/FE4VibF0SjfPk8e5DSZ2WDTpvlBjCulZqFOEoqiaXGYiblAsVqCcArkEnWxWHzvE6na44DHdPNm94ib1icbshjdiaysA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h4 id="5-模型-视图-控制器架构"><a href="#5-模型-视图-控制器架构" class="headerlink" title="5.模型 - 视图 - 控制器架构"></a>5.模型 - 视图 - 控制器架构</h4><p><img src="/assets/640-1616677752126.png" alt="图片"></p>
 <p> <strong>1</strong> <strong>上下文</strong> </p>
 <p>用户界面通常是一个交互性应用程序的最频繁被修改的部分。用户通常希望从不同的视角查看数据，例如柱状图或者饼图。这些表示形式都应该反映数据当前的状态。</p>
 <p> <strong>2</strong> <strong>问题</strong> </p>
@@ -289,7 +289,7 @@
 <p> <strong>2</strong> <strong>问题</strong> </p>
 <p>构建分布式系统，这个系统可以服务异步到达的事件相关信息，并且能从简单小型扩展到复杂大型。</p>
 <p> <strong>3</strong> <strong>方案</strong> </p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/FE4VibF0SjfPk8e5DSZ2WDTpvlBjCulZqjuJLMmUcj80LYvFoJp0V90EQyibqQxBhriaEFV72KS56ia0oOibg25aZ3A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="assets/640-1616677762211.png" alt="图片"></p>
 <p>为事件处理部署独立的事件进程或处理器。到达的事件进入队列。调度程序根据调度策略从队列中拉取事件并将它们分配到合适的事件处理器。</p>
 <p> <strong>4</strong> <strong>弱点</strong> </p>
 <p>性能和错误恢复可能是问题。</p>
@@ -307,7 +307,7 @@
 <p> <strong>2</strong> <strong>问题</strong> </p>
 <p>一体化应用程序会变得过于庞大和复杂，无法得到有效支持和部署来实现最优的分布式资源利用，例如在云环境中。</p>
 <p> <strong>3</strong> <strong>方案</strong> </p>
-<p><img src="assets/640-1608179395167.png" alt="图片"></p>
+<p><img src="/assets/640-1608179395167.png" alt="图片"></p>
 <p>将应用程序构建成服务套件。每个服务都是独立部署和可扩展的，拥有自己的 API 边界。不同的服务可以用不同的编程语言编写，管理它们自己的数据库，由不同的团队开发。</p>
 <p> <strong>4</strong> <strong>弱点</strong> </p>
 <p>系统设计必须能容忍服务失败，需要更多的系统监控。服务编排和事件协作开销比较大。</p>
