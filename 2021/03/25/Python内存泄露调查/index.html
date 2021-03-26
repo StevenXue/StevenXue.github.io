@@ -187,9 +187,9 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="第一步：本地复现问题"><a href="#第一步：本地复现问题" class="headerlink" title="第一步：本地复现问题"></a>第一步：本地复现问题</h1><p>本地测试一发，确实能稳定复现…</p>
+      		<h2 id="第一步：本地复现问题"><a href="#第一步：本地复现问题" class="headerlink" title="第一步：本地复现问题"></a>第一步：本地复现问题</h2><p>本地测试一发，确实能稳定复现…</p>
 <p>无法判断框架还是自己写的Code 的问题。</p>
-<h1 id="第二步：搜索：python-怎样排查内存泄漏"><a href="#第二步：搜索：python-怎样排查内存泄漏" class="headerlink" title="第二步：搜索：python 怎样排查内存泄漏"></a>第二步：搜索：python 怎样排查内存泄漏</h1><p>开始搜索一些，比如这个 <a href="http://jackywu.github.io/articles/python%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E8%B0%83%E8%AF%95%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/" target="_blank" rel="noopener">Python 内存泄漏调试指导思想</a> 看来看去，这些文章大致分为两类，一部分是介绍 Python 垃圾回收机制；另一部分是介绍公众调试工具的使用。 有的文章里面还总结了常见的出现内存泄露的情景：</p>
+<h2 id="第二步：搜索：python-怎样排查内存泄漏"><a href="#第二步：搜索：python-怎样排查内存泄漏" class="headerlink" title="第二步：搜索：python 怎样排查内存泄漏"></a>第二步：搜索：python 怎样排查内存泄漏</h2><p>开始搜索一些，比如这个 <a href="http://jackywu.github.io/articles/python%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E8%B0%83%E8%AF%95%E6%8C%87%E5%AF%BC%E6%80%9D%E6%83%B3/" target="_blank" rel="noopener">Python 内存泄漏调试指导思想</a> 看来看去，这些文章大致分为两类，一部分是介绍 Python 垃圾回收机制；另一部分是介绍公众调试工具的使用。 有的文章里面还总结了常见的出现内存泄露的情景：</p>
 <ol>
 <li>C 语言编写的模块出现内存泄漏</li>
 <li>全局对象比如 list/dict 不断增大</li>
@@ -250,7 +250,7 @@
 <p><strong>注</strong>: pyrasite使用之前需要在root用户下运行命令 echo 0 &gt; /proc/sys/kernel/yama/ptrace_scope后才能正常使用</p>
 </blockquote>
 <p>pyrasite里边有一个工具叫pyrasite-memory-viewer, 功能和guppy差不多, 不过可以对内存使用统计和对象之间的引用关系进行快照保存, 很易用也很强大。</p>
-<h1 id="第三步：各种照搬和尝试，找到原因"><a href="#第三步：各种照搬和尝试，找到原因" class="headerlink" title="第三步：各种照搬和尝试，找到原因"></a>第三步：各种照搬和尝试，找到原因</h1><p>使用各种工具和方法查内存使用情况和代码运行状态，直到查出问题所在。</p>
+<h2 id="第三步：各种照搬和尝试，找到原因"><a href="#第三步：各种照搬和尝试，找到原因" class="headerlink" title="第三步：各种照搬和尝试，找到原因"></a>第三步：各种照搬和尝试，找到原因</h2><p>使用各种工具和方法查内存使用情况和代码运行状态，直到查出问题所在。</p>
 <p><strong>查看 进程的线程数量</strong> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -o nlwp &lt;pid&gt;</span><br></pre></td></tr></table></figure>
 
@@ -260,7 +260,7 @@
 <p>*<em>查看垃圾回收的日志 *</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gc.set_debug(...)</span><br></pre></td></tr></table></figure>
 
-<h1 id><a href="#" class="headerlink" title=" "></a> </h1><h1 id="第四步：思考总结，回顾过程"><a href="#第四步：思考总结，回顾过程" class="headerlink" title="第四步：思考总结，回顾过程"></a>第四步：思考总结，回顾过程</h1>
+<h1 id><a href="#" class="headerlink" title=" "></a> </h1><h2 id="第四步：思考总结，回顾过程"><a href="#第四步：思考总结，回顾过程" class="headerlink" title="第四步：思考总结，回顾过程"></a>第四步：思考总结，回顾过程</h2>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
